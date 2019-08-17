@@ -7,10 +7,39 @@
 - [2 MobileNet](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#1-卷积神经网络cnn)
 
 ## 1 卷积神经网络(CNN)
+在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)的例子，准确率（最高为0.9415）如下：
+<p align="center">
+  <img width="640" src="/baseline/cnn/images/cnn_acc.png" "cnn_acc">
+</p>
+Loss如下：
+<p align="center">
+  <img width="640" src="/baseline/cnn/images/cnn_loss.png" "cnn_acc">
+</p>
+混淆矩阵如下：
+<p align="center">
+  <img width="640" src="/baseline/cnn/images/cnn_confusion_matrix.png" "cnn_acc">
+</p>
+详细报表如下：
+              precision    recall  f1-score   support
+
+           0       0.92      0.85      0.88      1000
+           1       1.00      0.99      0.99      1000
+           2       0.91      0.90      0.91      1000
+           3       0.94      0.93      0.94      1000
+           4       0.88      0.94      0.91      1000
+           5       0.99      0.99      0.99      1000
+           6       0.80      0.82      0.81      1000
+           7       0.97      0.98      0.98      1000
+           8       0.99      0.99      0.99      1000
+           9       0.98      0.97      0.97      1000
+
+   micro avg       0.94      0.94      0.94     10000
+   macro avg       0.94      0.94      0.94     10000
+weighted avg       0.94      0.94      0.94     10000
 
 
 ## 2 MobileNet
-@苏剑林的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确率（最高为0.9322）如下：
+@苏剑林的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确率（最高为0.9322，在加载预训练权重下可以提高0.015左右）如下：
 <p align="center">
   <img width="640" src="/baseline/mobilenet/images/mobilenet_acc.png" "mobilenet_acc">
 </p>
@@ -39,3 +68,5 @@ Loss如下：
    micro avg       0.93      0.93      0.93     10000
    macro avg       0.93      0.93      0.93     10000
 weighted avg       0.93      0.93      0.93     10000
+
+## 4 问题汇总
