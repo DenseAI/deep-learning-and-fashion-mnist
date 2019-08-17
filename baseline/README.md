@@ -10,3 +10,7 @@
 
 
 ## 2 MobileNet
+@苏剑林的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确里如下：
+<p align="center">
+  <img width="1000" src="/mobilenet/images/mobilenet_acc.png" "mobilenet_acc">
+</p>
