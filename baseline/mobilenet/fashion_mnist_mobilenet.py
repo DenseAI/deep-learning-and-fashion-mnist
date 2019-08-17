@@ -94,7 +94,7 @@ plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
-plt.savefig('./images/mobilenet_acc.png')
+plt.savefig('./images/mobilenet_acc2.png')
 plt.show()
 
 # Plot training & validation loss values
@@ -105,7 +105,7 @@ plt.ylabel('Loss')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
-plt.savefig('./images/mobilenet_loss.png')
+plt.savefig('./images/mobilenet_loss2.png')
 plt.show()
 
 print(model_train_history)
@@ -167,7 +167,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
 					ha="center", va="center",
 					color="white" if cm[i, j] > thresh else "black")
 	fig.tight_layout();
-	plt.savefig('./images/mobilenet_confusion_matrix.png')
+	plt.savefig('./images/mobilenet_confusion_matrix2.png')
 	#return ax
 
 # Plot confusion matrix

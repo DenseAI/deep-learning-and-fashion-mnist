@@ -502,34 +502,34 @@ def MobileNet(input_shape=None,
     model = models.Model(inputs, x, name='mobilenet_%0.2f_%s' % (alpha, rows))
 
     # Load weights.
-    # if weights == 'imagenet':
-    #     if backend.image_data_format() == 'channels_first':
-    #         raise ValueError('Weights for "channels_first" format '
-    #                          'are not available.')
-    #     if alpha == 1.0:
-    #         alpha_text = '1_0'
-    #     elif alpha == 0.75:
-    #         alpha_text = '7_5'
-    #     elif alpha == 0.50:
-    #         alpha_text = '5_0'
-    #     else:
-    #         alpha_text = '2_5'
-    #
-    #     if include_top:
-    #         model_name = 'mobilenet_%s_%d_tf.h5' % (alpha_text, rows)
-    #         weight_path = BASE_WEIGHT_PATH + model_name
-    #         weights_path = keras_utils.get_file(model_name,
-    #                                             weight_path,
-    #                                             cache_subdir='models')
-    #     else:
-    #         model_name = 'mobilenet_%s_%d_tf_no_top.h5' % (alpha_text, rows)
-    #         weight_path = BASE_WEIGHT_PATH + model_name
-    #         weights_path = keras_utils.get_file(model_name,
-    #                                             weight_path,
-    #                                             cache_subdir='models')
-    #     model.load_weights(weights_path)
-    # elif weights is not None:
-    #     model.load_weights(weights)
+    if weights == 'imagenet':
+        if backend.image_data_format() == 'channels_first':
+            raise ValueError('Weights for "channels_first" format '
+                             'are not available.')
+        if alpha == 1.0:
+            alpha_text = '1_0'
+        elif alpha == 0.75:
+            alpha_text = '7_5'
+        elif alpha == 0.50:
+            alpha_text = '5_0'
+        else:
+            alpha_text = '2_5'
+
+        if include_top:
+            model_name = 'mobilenet_%s_%d_tf.h5' % (alpha_text, rows)
+            weight_path = BASE_WEIGHT_PATH + model_name
+            weights_path = keras_utils.get_file(model_name,
+                                                weight_path,
+                                                cache_subdir='models')
+        else:
+            model_name = 'mobilenet_%s_%d_tf_no_top.h5' % (alpha_text, rows)
+            weight_path = BASE_WEIGHT_PATH + model_name
+            weights_path = keras_utils.get_file(model_name,
+                                                weight_path,
+                                                cache_subdir='models')
+        model.load_weights(weights_path)
+    elif weights is not None:
+        model.load_weights(weights)
 
     if old_data_format:
         backend.set_image_data_format(old_data_format)
