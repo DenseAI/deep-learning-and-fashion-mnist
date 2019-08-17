@@ -14,3 +14,28 @@
 <p align="center">
   <img width="640" src="/baseline/mobilenet/images/mobilenet_acc.png" "mobilenet_acc">
 </p>
+Loss如下：
+<p align="center">
+  <img width="640" src="/baseline/mobilenet/images/mobilenet_confusion_loss.png" "mobilenet_acc">
+</p>
+混淆矩阵如下：
+<p align="center">
+  <img width="640" src="/baseline/mobilenet/images/mobilenet_confusion_matrix.png" "mobilenet_acc">
+</p>
+详细报表如下：
+              precision    recall  f1-score   support
+
+           0       0.88      0.85      0.86      1000
+           1       0.99      0.99      0.99      1000
+           2       0.90      0.91      0.91      1000
+           3       0.90      0.96      0.93      1000
+           4       0.91      0.88      0.90      1000
+           5       0.99      0.99      0.99      1000
+           6       0.79      0.80      0.79      1000
+           7       0.96      0.98      0.97      1000
+           8       0.99      0.98      0.99      1000
+           9       0.98      0.96      0.97      1000
+
+   micro avg       0.93      0.93      0.93     10000
+   macro avg       0.93      0.93      0.93     10000
+weighted avg       0.93      0.93      0.93     10000
