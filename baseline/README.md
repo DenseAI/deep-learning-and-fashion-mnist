@@ -16,7 +16,7 @@
 </p>
 Loss如下：
 <p align="center">
-  <img width="640" src="/baseline/mobilenet/images/mobilenet_confusion_loss.png" "mobilenet_acc">
+  <img width="640" src="/baseline/mobilenet/images/mobilenet_loss.png" "mobilenet_acc">
 </p>
 混淆矩阵如下：
 <p align="center">
