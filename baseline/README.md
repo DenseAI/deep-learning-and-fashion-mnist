@@ -10,7 +10,7 @@
 
 
 ## 2 MobileNet
-@苏剑林的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确里如下：
+@苏剑林的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确率（最高为0.9322）如下：
 <p align="center">
-  <img width="1000" src="/baseline/mobilenet/images/mobilenet_acc.png" "mobilenet_acc">
+  <img width="640" src="/baseline/mobilenet/images/mobilenet_acc.png" "mobilenet_acc">
 </p>

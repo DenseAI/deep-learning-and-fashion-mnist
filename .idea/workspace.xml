@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/baseline/mobilenet/mobilenet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="491" selection-start-line="491" selection-end-line="491" />
+            <state relative-caret-position="255">
+              <caret line="514" column="12" selection-start-line="514" selection-start-column="12" selection-end-line="514" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -177,8 +177,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/baseline/mobilenet/mobilenet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="491" selection-start-line="491" selection-end-line="491" />
+        <state relative-caret-position="255">
+          <caret line="514" column="12" selection-start-line="514" selection-start-column="12" selection-end-line="514" selection-end-column="12" />
         </state>
       </provider>
     </entry>
