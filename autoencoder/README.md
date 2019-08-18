@@ -115,21 +115,20 @@ Loss如下：
 ```
               precision    recall  f1-score   support
 
-           0       0.82      0.86      0.84       100
-           1       0.99      1.00      1.00       107
-           2       0.84      0.84      0.84        97
-           3       0.93      0.88      0.90        96
-           4       0.83      0.90      0.86        98
-           5       1.00      1.00      1.00       100
-           6       0.79      0.72      0.75       107
-           7       0.95      0.97      0.96        91
-           8       0.98      0.98      0.98       106
-           9       0.97      0.97      0.97        98
+           0       0.83      0.89      0.86       108
+           1       0.97      1.00      0.99       103
+           2       0.87      0.87      0.87       103
+           3       0.92      0.86      0.89       100
+           4       0.84      0.84      0.84       101
+           5       0.99      1.00      1.00       100
+           6       0.71      0.67      0.69        82
+           7       0.99      0.99      0.99       109
+           8       1.00      0.99      1.00       106
+           9       0.99      0.99      0.99        88
 
-   micro avg       0.91      0.91      0.91      1000
+   micro avg       0.92      0.92      0.92      1000
    macro avg       0.91      0.91      0.91      1000
-weighted avg       0.91      0.91      0.91      1000
-
+weighted avg       0.91      0.92      0.91      1000
 
 ```
 
@@ -140,7 +139,9 @@ weighted avg       0.91      0.91      0.91      1000
 
 ## 参考
 
-- [zalandoresearch/fashion-mnist ](https://github.com/zalandoresearch/fashion-mnist)
-- [fashion mnist的一个baseline (MobileNet 95%) ](https://kexue.fm/archives/4556)
+- [The official code repository for examples in the O'Reilly book 'Generative Deep Learning' ](https://github.com/davidADSP/GDL_code)
+- [SpikeKing/triplet-loss-mnist ](https://github.com/SpikeKing/triplet-loss-mnist)
 - [Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
 - [zhunzhong07/Random-Erasing ](https://github.com/zhunzhong07/Random-Erasing)
+
+## 论文

@@ -6,7 +6,7 @@ from scipy.stats import norm
 import pickle
 from keras.datasets import mnist, fashion_mnist
 
-from CAE import Autoencoder
+from AE import Autoencoder
 #from utils.loaders import load_mnist, load_model
 
 from sklearn.metrics import classification_report
@@ -61,46 +61,9 @@ example_idx = np.random.choice(range(len(x_test)), n_to_show)
 example_images = x_test[example_idx]
 example_labels = y_test[example_idx]
 
+x_train_z_points = AE.encoder.predict(x_train)
+x_test_z_points = AE.encoder.predict(example_images)
 
-labels = []
-for jj in range(n_to_show):
-    labels.append(0)
-labels = np.array(labels)
-
-
-
-x_train_z_points = AE.encoder.predict([x_train,y_train])
-x_test_z_points = AE.encoder.predict([example_images, labels])
-
-z_point_dict = {}
-z_point_norm_dict = {}
-for ii in range(10):
-    labels = []
-    for jj in range(n_to_show):
-        labels.append(ii)
-    labels = np.array(labels)
-
-    #image = example_images[index]
-    #example_images = np.reshape(example_images, (1, example_images.shape[0], image.shape[1], image.shape[2]))
-
-    x_test_z_points = AE.encoder.predict([example_images, labels])
-    z_points = x_test_z_points
-    z_point_dict[ii] = z_points
-    test_norms = []
-    for jj in range(len(z_points)):
-        aa = z_points[jj]
-        norm = 0.0
-        for kk in range(len(aa)):
-            norm += aa[kk] ** 2
-
-        if norm != 0.0:
-            norm = norm ** 0.5
-        test_norms.append(norm)
-    test_norms = np.array(test_norms)
-    z_point_norm_dict[ii] = test_norms
-
-print(z_point_dict.keys())
-print(z_point_norm_dict.keys())
 
 train_norms = []
 for ii in range(len(x_train_z_points)):
@@ -125,25 +88,21 @@ error = 0
 
 y_preds = []
 for ii in range(len(x_test_z_points)):
+    aa = x_test_z_points[ii]
 
-    # aa = x_test_z_points[ii]
-    # normA = 0.0
-    # for jj in range(len(aa)):
-    #     normA += aa[jj] ** 2
-    #
-    # if normA != 0.0:
-    #     normA = normA ** 0.5
+    aa = x_test_z_points[ii]
+
+    normA = 0.0
+    for jj in range(len(aa)):
+        normA += aa[jj] ** 2
+
+    if normA != 0.0:
+        normA = normA ** 0.5
 
     max = -1000000
     index = -1
     sim_all = []
     for jj in range(len(x_train_z_points)):
-
-        label_index = y_train[jj]
-        aa = z_point_dict[label_index][ii]
-
-        normA = z_point_norm_dict[label_index][ii]
-
         bb = x_train_z_points[jj]
         dot_product = np.dot(aa, bb)
         normB = train_norms[jj]
@@ -231,7 +190,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout();
-    plt.savefig('./images/cae_confusion_matrix.png')
+    plt.savefig('./images/ae_confusion_matrix.png')
 
 
 # return ax
