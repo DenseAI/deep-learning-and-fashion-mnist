@@ -176,8 +176,8 @@ class TripletTrainer(TrainerBase):
 
         self.model.fit(
             X, [np.ones(len(anc_ins)), y_train_anc_ins, y_train_pos_ins, y_train_neg_ins],
-            batch_size=32,
-            epochs=10,
+            batch_size=128,
+            epochs=20,
             validation_data=[X_te, [np.ones(len(anc_ins_te)), y_test_anc_ins, y_test_pos_ins, y_test_neg_ins]],
             verbose=1,
             callbacks=self.callbacks)

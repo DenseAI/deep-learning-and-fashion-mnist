@@ -6,7 +6,7 @@ from scipy.stats import norm
 import pickle
 from keras.datasets import mnist, fashion_mnist
 
-from AE import Autoencoder
+from TripletModel import TripletModel
 #from utils.loaders import load_mnist, load_model
 
 from sklearn.metrics import classification_report
@@ -22,12 +22,12 @@ from keras.models import Sequential, Model
 from keras.optimizers import Adam
 
 
-def load_model(model_class, folder):
-    with open(os.path.join(folder, 'params.pkl'), 'rb') as f:
-        params = pickle.load(f)
+def load_model(model, folder):
+    #with open(os.path.join(folder, 'params.pkl'), 'rb') as f:
+    #    params = pickle.load(f)
 
-    model = model_class(*params)
-    model.load_weights(os.path.join(folder, 'weights/weights.h5'))
+    #model = model_class(*params)
+    model.load_weights(os.path.join(folder, 'triplet_loss_model.h5'), by_name=True)
     return model
 
 
@@ -51,18 +51,21 @@ RUN_FOLDER += '_'.join([RUN_ID, DATA_NAME])
 
 (x_train, y_train), (x_test, y_test) = load_mnist()
 
-AE = load_model(Autoencoder, RUN_FOLDER)
 
-AE.encoder.summary()
-AE.decoder.summary()
+triplet_model = TripletModel()
 
-n_to_show = 1000
+class_model = load_model(triplet_model.class_model, "./")
+
+class_model.summary()
+
+
+n_to_show = 100
 example_idx = np.random.choice(range(len(x_test)), n_to_show)
 example_images = x_test[example_idx]
 example_labels = y_test[example_idx]
 
-x_train_z_points = AE.encoder.predict(x_train)
-x_test_z_points = AE.encoder.predict(example_images)
+x_train_z_points = class_model.predict(x_train)
+x_test_z_points = class_model.predict(example_images)
 
 
 train_norms = []
@@ -113,7 +116,7 @@ for ii in range(len(x_test_z_points)):
         else:
             sim = dot_product / ((normA) * (normB))
 
-        if sim > max and sim < 0.9999:
+        if sim > max :
             max = sim
             index = jj
 
@@ -190,7 +193,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout();
-    plt.savefig('./images/ae_confusion_matrix.png')
+    plt.savefig('./images/triplet_loss_confusion_matrix.png')
 
 
 # return ax
