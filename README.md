@@ -7,6 +7,7 @@
 
 ## 1 数据集基线
 在[zalandoresearch](https://github.com/zalandoresearch/fashion-mnist)官方库，列举了部分基线算法，我们挑选部分算法进行实现。
+
 <p>
 CNN:
 </p>
@@ -25,6 +26,7 @@ MobileNet(加载预训练权重):
 <p align="center">
   <img width="640" src="/baseline/mobilenet/images/mobilenet_confusion_matrix.png" "mobilenet_acc">
 </p>
+
 #### 问题分析
 详见 [基线](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline)
 
