@@ -23,25 +23,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/autoencoder/AE/AE.py">
+        <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="168" column="8" selection-start-line="168" selection-start-column="8" selection-end-line="169" selection-end-column="68" />
+            <state relative-caret-position="275">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               <folding>
-                <element signature="e#25#186#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py">
+        <entry file="file://$PROJECT_DIR$/autoencoder/CAE/CAE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="164" column="22" selection-start-line="164" selection-start-column="8" selection-end-line="164" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -127,6 +124,7 @@
         <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_train.py" />
         <option value="$PROJECT_DIR$/autoencoder/AE/AE.py" />
         <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py" />
+        <option value="$PROJECT_DIR$/autoencoder/CAE/CAE.py" />
       </list>
     </option>
   </component>
@@ -152,13 +150,7 @@
             <path>
               <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
               <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
-              <item name="baseline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
-              <item name="baseline" type="462c0819:PsiDirectoryNode" />
-              <item name="cnn" type="462c0819:PsiDirectoryNode" />
+              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -168,14 +160,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/autoencoder/AE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/autoencoder" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\autoencoder" />
+      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\autoencoder\CAE" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\autoencoder\AE" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\wrn" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\cnn" />
-      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\mobilenet" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,7 +314,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -445,11 +437,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+        <state relative-caret-position="275">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/CAE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="164" column="22" selection-start-line="164" selection-start-column="8" selection-end-line="164" selection-end-column="22" />
         </state>
       </provider>
     </entry>
