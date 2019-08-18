@@ -5,6 +5,7 @@
 ## 目录
 - [1 数据集基线](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
 - [2 根因分析-生成模式](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
+- [3 根因分析-Loss函数](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
 
 ## 1 数据集基线
 在[zalandoresearch](https://github.com/zalandoresearch/fashion-mnist)官方库，列举了部分基线算法，我们挑选部分算法进行实现。
@@ -38,6 +39,15 @@ MobileNet(加载预训练权重):
 #### 2.2 带分类条件的自编码器AC-AutoEncoder
 #### 2.3 量子化自编码器VQ-VAE
 #### 2.4 基于Triplet loss的编码器
+
+## 3 根因分析-Loss函数
+
+#### 3.1 SoftMax
+#### 3.2 Center-Loss 
+#### 3.3 L-SoftMax
+#### 3.3 Norm-Loss
+#### 3.4 Coco-Loss
+#### 3.5 Arc-Loss
 
 ## 参考
 

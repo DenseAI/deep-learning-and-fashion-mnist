@@ -115,7 +115,29 @@ class ModelBase(object):
         self.model.save_weights(checkpoint_path)
         print("[INFO] Model saved")
 
+    def save_class_model(self, checkpoint_path):
+        """
+        存储checkpoint, 路径定义于配置文件中
+        """
+        if self.class_model is None:
+            raise Exception("[Exception] You have to build the model first.")
+
+        print("[INFO] Saving model...")
+        self.class_model.save_weights(checkpoint_path)
+        print("[INFO] Model saved")
+
     def load(self, checkpoint_path):
+        """
+        加载checkpoint, 路径定义于配置文件中
+        """
+        if self.model is None:
+            raise Exception("[Exception] You have to build the model first.")
+
+        print("[INFO] Loading model checkpoint {} ...\n".format(checkpoint_path))
+        self.model.load_weights(checkpoint_path)
+        print("[INFO] Model loaded")
+
+    def load_class_model(self, checkpoint_path):
         """
         加载checkpoint, 路径定义于配置文件中
         """
@@ -258,7 +280,7 @@ class TripletModel(ModelBase):
         #            show_shapes=True)  # 绘制模型图
         model.compile(loss=[self.triplet_loss,"categorical_crossentropy","categorical_crossentropy","categorical_crossentropy"], optimizer=Adam(), metrics=["accuracy"])
 
-        class_model = Model(inputs=anc_input, outputs=output1)
+        class_model = Model(inputs=anc_input, outputs=std_out)
         # Compile the model
         #class_model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
