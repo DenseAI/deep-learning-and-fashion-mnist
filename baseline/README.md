@@ -41,7 +41,7 @@ weighted avg       0.94      0.94      0.94     10000
 ```
 
 ## 2 MobileNet
-@苏剑林的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确率（最高为0.9322，在加载预训练权重下可以最高0.9440左右）如下：
+[@苏剑林](http://kexue.fm/archives/4556/)的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确率（最高为0.9322，在加载预训练权重下可以最高0.9440左右）如下：
 未加载预训练权重
 <p align="center">
   <img width="640" src="/baseline/mobilenet/images/mobilenet_acc.png" "mobilenet_acc">
