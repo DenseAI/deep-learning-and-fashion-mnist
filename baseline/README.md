@@ -139,3 +139,19 @@ Loss如下：
 1.6 运动鞋7与踝靴9，通过肉眼观察，运动鞋与踝靴都有高帮鞋，但材料不一样，踝靴多是皮质材料。
 </p>
 
+
+#### 问题2 卷积神经网络层间分析
+在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
+分析卷积神经网络的子层：
+2.1 Layer 0：
+<p align="center">
+  <img width="928" src="/baseline/images/layer_0.png" "Layer 0">
+</p>
+2.2 Layer 3：
+<p align="center">
+  <img width="928" src="/baseline/images/layer_0.png" "Layer 0">
+</p>
+2.3 Layer 5：
+<p align="center">
+  <img width="928" src="/baseline/images/layer_0.png" "Layer 0">
+</p>
