@@ -11,51 +11,93 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baseline/mobilenet/mobilenet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8024">
-              <caret line="524" column="40" selection-start-line="524" selection-start-column="40" selection-end-line="524" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1853">
-              <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baseline/mobilenet/fashion_mnist_mobilenet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2482">
-              <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baseline/wrn/wide_residual_network.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="149" column="92" selection-start-line="149" selection-start-column="81" selection-end-line="149" selection-end-column="92" />
+            <state relative-caret-position="272">
+              <caret line="157" column="58" selection-start-line="157" selection-start-column="58" selection-end-line="158" selection-end-column="56" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autoencoder/AE/AE.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="168" column="8" selection-start-line="168" selection-start-column="8" selection-end-line="169" selection-end-column="68" />
+              <folding>
+                <element signature="e#25#186#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py">
+        <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="96" selection-start-line="96" selection-end-line="96" />
+            <state relative-caret-position="292">
+              <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
               <folding>
-                <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/sklearn/metrics/classification.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/sklearn/utils/validation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="234" selection-start-line="234" selection-end-line="234" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/gensim/models/keyedvectors.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="548" column="42" selection-start-line="548" selection-start-column="38" selection-end-line="548" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/numpy/core/multiarray.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-818">
+              <caret line="693" column="4" selection-start-line="693" selection-start-column="4" selection-end-line="693" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/numpy/core/fromnumeric.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-734">
+              <caret line="942" column="4" selection-start-line="942" selection-start-column="4" selection-end-line="942" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,6 +124,9 @@
         <option value="$PROJECT_DIR$/baseline/mobilenet/fashion_mnist_mobilenet.py" />
         <option value="$PROJECT_DIR$/baseline/wrn/wide_residual_network.py" />
         <option value="$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py" />
+        <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_train.py" />
+        <option value="$PROJECT_DIR$/autoencoder/AE/AE.py" />
+        <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py" />
       </list>
     </option>
   </component>
@@ -115,12 +160,6 @@
               <item name="baseline" type="462c0819:PsiDirectoryNode" />
               <item name="cnn" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
-              <item name="baseline" type="462c0819:PsiDirectoryNode" />
-              <item name="wrn" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -129,10 +168,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/baseline/wrn" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/autoencoder/AE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\autoencoder\AE" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\wrn" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\cnn" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\mobilenet" />
@@ -150,7 +190,49 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fashion_mnist_wrn">
+  <component name="RunManager" selected="Python.autoencoder_analysis">
+    <configuration name="autoencoder_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="deep-learning-and-fashion-mnist" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/autoencoder/AE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="autoencoder_train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="deep-learning-and-fashion-mnist" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/autoencoder/AE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/autoencoder/AE/autoencoder_train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="fashion_mnist_cnn" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -216,6 +298,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.autoencoder_analysis" />
+        <item itemvalue="Python.autoencoder_train" />
         <item itemvalue="Python.fashion_mnist_wrn" />
         <item itemvalue="Python.fashion_mnist_mobilenet" />
         <item itemvalue="Python.fashion_mnist_cnn" />
@@ -237,13 +321,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36984816" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40455532" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -263,13 +348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8024">
           <caret line="524" column="40" selection-start-line="524" selection-start-column="40" selection-end-line="524" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -296,6 +374,81 @@
           <caret line="96" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/AE/AE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="168" column="8" selection-start-line="168" selection-start-column="8" selection-end-line="169" selection-end-column="68" />
+          <folding>
+            <element signature="e#25#186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-734">
+          <caret line="942" column="4" selection-start-line="942" selection-start-column="4" selection-end-line="942" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/numpy/core/multiarray.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-818">
+          <caret line="693" column="4" selection-start-line="693" selection-start-column="4" selection-end-line="693" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/gensim/models/keyedvectors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="548" column="42" selection-start-line="548" selection-start-column="38" selection-end-line="548" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/sklearn/metrics/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/sklearn/utils/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="234" selection-start-line="234" selection-end-line="234" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="157" column="58" selection-start-line="157" selection-start-column="58" selection-end-line="158" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
