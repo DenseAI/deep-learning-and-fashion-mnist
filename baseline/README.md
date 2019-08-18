@@ -101,7 +101,7 @@ Loss如下：
 ## 4 问题汇总
 
 #### 问题1 分类间相互干扰
-1、分类间相互干扰，特别0、2、4、6之间，它们之间的干扰如何形成？在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
+1.1 分类间相互干扰，特别0、2、4、6之间，它们之间的干扰如何形成？在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
 分析了部分预测错误的例子：
 <p align="center">
   <img width="928" src="/baseline/images/predicted_false.png" "predicted_false">
@@ -122,6 +122,9 @@ Loss如下：
 | 7 | Sneaker（运动鞋）|
 | 8 | Bag（包）|
 | 9 | Ankle boot（踝靴）|
-<p>
-1.1 T恤0与汗衫6，相互干扰最大，通过肉眼观察，T恤是短袖且无扣子/无拉链，汗衫部分短袖，但有扣子或者拉链
-</p>
+
+1.2 T恤0与汗衫6，相互干扰最大，通过肉眼观察，T恤是短袖且无扣子/无拉链，汗衫部分短袖，但有扣子或者拉链。
+1.3 套衫2与汗衫6，通过肉眼观察，套衫是长袖且无扣子/无拉链，汗衫部分长袖，但有扣子或者拉链。
+1.4 套衫2与外套4，通过肉眼观察，套衫是长袖且无扣子/无拉链，外套长袖，但有扣子或者拉链，而且布料很厚。
+1.5 外套4与汗衫6，通过肉眼观察，外套长袖布料很厚？汗衫材料薄？
+1.6 运动鞋7与踝靴9，通过肉眼观察，运动鞋与踝靴都有高帮鞋，但材料不一样，踝靴多是皮质材料。
