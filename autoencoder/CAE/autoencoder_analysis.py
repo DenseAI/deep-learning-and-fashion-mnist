@@ -61,8 +61,31 @@ example_idx = np.random.choice(range(len(x_test)), n_to_show)
 example_images = x_test[example_idx]
 example_labels = y_test[example_idx]
 
-x_train_z_points = AE.encoder.predict(x_train)
-x_test_z_points = AE.encoder.predict(example_images)
+
+labels = []
+for jj in range(n_to_show):
+    labels.append(0)
+labels = np.array(labels)
+
+
+
+x_train_z_points = AE.encoder.predict([x_train,y_train])
+x_test_z_points = AE.encoder.predict([example_images, labels])
+
+# z_point_dict = {}
+# for ii in range(10):
+#     labels = []
+#     for jj in range(n_to_show):
+#         labels.append(ii)
+#     labels = np.array(labels)
+#
+#     #image = example_images[index]
+#     #example_images = np.reshape(example_images, (1, example_images.shape[0], image.shape[1], image.shape[2]))
+#
+#     x_test_z_points = AE.encoder.predict([example_images, labels])
+#     z_points = x_test_z_points
+#     z_point_dict[ii] = z_points
+
 
 
 train_norms = []
@@ -89,9 +112,6 @@ error = 0
 y_preds = []
 for ii in range(len(x_test_z_points)):
     aa = x_test_z_points[ii]
-
-    aa = x_test_z_points[ii]
-
     normA = 0.0
     for jj in range(len(aa)):
         normA += aa[jj] ** 2
@@ -190,7 +210,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout();
-    plt.savefig('./images/ae_confusion_matrix.png')
+    plt.savefig('./images/cae_confusion_matrix.png')
 
 
 # return ax

@@ -10,11 +10,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2649">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state relative-caret-position="227">
+              <caret line="74" selection-start-line="74" selection-start-column="2" selection-end-line="86" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/engine/training.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="1148" selection-start-line="1148" selection-end-line="1148" />
             </state>
           </provider>
         </entry>
@@ -31,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/autoencoder/tripletloss/TripletLoss.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-5022">
@@ -76,10 +88,10 @@
         <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_train.py" />
         <option value="$PROJECT_DIR$/autoencoder/AE/AE.py" />
         <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py" />
-        <option value="$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py" />
         <option value="$PROJECT_DIR$/autoencoder/CAE/CAE.py" />
         <option value="$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py" />
         <option value="$PROJECT_DIR$/autoencoder/tripletloss/TripletLoss.py" />
+        <option value="$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py" />
       </list>
     </option>
   </component>
@@ -113,6 +125,28 @@
               <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
               <item name="CAE" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
+              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
+              <item name="CAE" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
+              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
+              <item name="CAE" type="462c0819:PsiDirectoryNode" />
+              <item name="run" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
+              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
+              <item name="CAE" type="462c0819:PsiDirectoryNode" />
+              <item name="run" type="462c0819:PsiDirectoryNode" />
+              <item name="vae" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -144,7 +178,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.autoencoder_train (1)">
+  <component name="RunManager" selected="Python.autoencoder_analysis (1)">
+    <configuration name="autoencoder_analysis (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="deep-learning-and-fashion-mnist" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/autoencoder/CAE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="autoencoder_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -208,27 +263,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fashion_mnist_mobilenet" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="deep-learning-and-fashion-mnist" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baseline/mobilenet" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baseline/mobilenet/fashion_mnist_mobilenet.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="fashion_mnist_wrn" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -252,11 +286,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.autoencoder_analysis (1)" />
         <item itemvalue="Python.autoencoder_train (1)" />
         <item itemvalue="Python.autoencoder_analysis" />
         <item itemvalue="Python.autoencoder_train" />
         <item itemvalue="Python.fashion_mnist_wrn" />
-        <item itemvalue="Python.fashion_mnist_mobilenet" />
       </list>
     </recent_temporary>
   </component>
@@ -275,13 +309,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30477223" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36442515" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -425,13 +460,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2649">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -455,6 +483,23 @@
           <caret line="282" column="61" selection-start-line="282" selection-start-column="61" selection-end-line="282" selection-end-column="61" />
           <folding>
             <element signature="e#106#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/engine/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="1148" selection-start-line="1148" selection-end-line="1148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="74" selection-start-line="74" selection-start-column="2" selection-end-line="86" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
