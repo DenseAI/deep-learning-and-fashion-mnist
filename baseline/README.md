@@ -5,7 +5,7 @@
 ## 目录
 - [1 卷积神经网络(CNN)](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#1-卷积神经网络cnn)
 - [2 MobileNet](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#1-卷积神经网络cnn)
-
+- [3 MobileNet](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#1-卷积神经网络cnn)
 ## 1 卷积神经网络(CNN)
 在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)的例子，准确率（最高为0.9415）如下：
 <p align="center">
@@ -74,4 +74,20 @@ Loss如下：
 12    macro avg       0.93      0.93      0.93     10000
 13 weighted avg       0.93      0.93      0.93     10000
 
+
+
+## 3 Wide Resnet
+在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)的例子，准确率最高的前三位分别是
+0.967、0.963、0.959，分别使用了Wide Resnet，我们参考了 @zhunzhong07 的例子，使用Keras实现了Wide Resnet，但准确率达不到Pytorch版的WideResnet，准确率如下：
+<p align="center">
+  <img width="640" src="/baseline/wrn/images/wide_resnet_acc.png" "wide_resnet_acc">
+</p>
+Loss如下：
+<p align="center">
+  <img width="640" src="/baseline/wrn/images/wide_resnet_loss.png" "wide_resnet_acc">
+</p>
+混淆矩阵如下：
+<p align="center">
+  <img width="640" src="/baseline/wrn/images/wide_resnet_confusion_matrix.png" "wide_resnet_acc">
+</p>
 ## 4 问题汇总
