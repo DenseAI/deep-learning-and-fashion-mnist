@@ -4,8 +4,11 @@
 
 ## 目录
 - [1 卷积神经网络(CNN)](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#1-卷积神经网络cnn)
-- [2 MobileNet](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#1-卷积神经网络cnn)
-- [3 MobileNet](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#1-卷积神经网络cnn)
+- [2 MobileNet](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#2-mobilenet)
+- [3 Wide Resnet](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#3-wide-resnet)
+- [4 问题分析](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline#4-问题汇总)
+
+
 ## 1 卷积神经网络(CNN)
 在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)的例子，准确率（最高为0.9415）如下：
 <p align="center">
