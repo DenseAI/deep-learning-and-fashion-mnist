@@ -53,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="291">
-              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+              <caret line="96" selection-start-line="96" selection-end-line="96" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -293,7 +293,7 @@
     <entry file="file://$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

@@ -90,4 +90,13 @@ Loss如下：
 <p align="center">
   <img width="640" src="/baseline/wrn/images/wide_resnet_confusion_matrix.png" "wide_resnet_acc">
 </p>
+我们只跑了50轮，在[测试例子中](https://github.com/zhunzhong07/Random-Erasing/issues/9)，第152轮开始达到0.950，并在272轮时达到0.9580的最高值。
+
+
+
 ## 4 问题汇总
+1、分类间相互干扰，特别0、2、4、6之间，它们之间的干扰如何形成？在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
+分析了部分预测错误的例子：
+<p align="center">
+  <img width="928" src="/baseline/images/predicted_false.png" "predicted_false">
+</p>
