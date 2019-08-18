@@ -72,19 +72,19 @@ labels = np.array(labels)
 x_train_z_points = AE.encoder.predict([x_train,y_train])
 x_test_z_points = AE.encoder.predict([example_images, labels])
 
-# z_point_dict = {}
-# for ii in range(10):
-#     labels = []
-#     for jj in range(n_to_show):
-#         labels.append(ii)
-#     labels = np.array(labels)
-#
-#     #image = example_images[index]
-#     #example_images = np.reshape(example_images, (1, example_images.shape[0], image.shape[1], image.shape[2]))
-#
-#     x_test_z_points = AE.encoder.predict([example_images, labels])
-#     z_points = x_test_z_points
-#     z_point_dict[ii] = z_points
+z_point_dict = {}
+for ii in range(10):
+    labels = []
+    for jj in range(n_to_show):
+        labels.append(ii)
+    labels = np.array(labels)
+
+    #image = example_images[index]
+    #example_images = np.reshape(example_images, (1, example_images.shape[0], image.shape[1], image.shape[2]))
+
+    x_test_z_points = AE.encoder.predict([example_images, labels])
+    z_points = x_test_z_points
+    z_point_dict[ii] = z_points
 
 
 
@@ -111,6 +111,7 @@ error = 0
 
 y_preds = []
 for ii in range(len(x_test_z_points)):
+
     aa = x_test_z_points[ii]
     normA = 0.0
     for jj in range(len(aa)):

@@ -36,6 +36,26 @@ def cosine_similarity(vector1, vector2):
   <img width="640" src="/autoencoder/AE/images/ae_confusion_matrix.png" "mobilenet_acc">
 </p>
 
+详细报表如下：
+```
+              precision    recall  f1-score   support
+
+           0       0.81      0.85      0.83       100
+           1       0.98      0.98      0.98        90
+           2       0.80      0.81      0.80        99
+           3       0.92      0.85      0.89        96
+           4       0.83      0.82      0.83       102
+           5       0.97      0.93      0.95       112
+           6       0.69      0.71      0.70       100
+           7       0.92      0.96      0.94        98
+           8       0.99      0.96      0.97        99
+           9       0.95      0.98      0.97       104
+
+   micro avg       0.89      0.89      0.89      1000
+   macro avg       0.89      0.89      0.89      1000
+weighted avg       0.89      0.89      0.89      1000
+```
+
 从上面的结果看，简单Auto Encoder，无法满足分类要求。
 
 
