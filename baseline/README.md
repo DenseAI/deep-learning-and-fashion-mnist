@@ -146,15 +146,16 @@ Loss如下：
 #### 问题2 卷积神经网络层间分析
 在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
 分析卷积神经网络的子层：
+<p align="center">
 2.1 Layer 0：
-<p align="center">
   <img width="928" src="/baseline/images/layer_0.png" "Layer 0">
 </p>
+<p align="center">
 2.2 Layer 3：
-<p align="center">
-  <img width="928" src="/baseline/images/layer_0.png" "Layer 0">
+  <img width="928" src="/baseline/images/layer_3.png" "Layer 0">
 </p>
+<p align="center">
 2.3 Layer 5：
-<p align="center">
-  <img width="928" src="/baseline/images/layer_0.png" "Layer 0">
+  <img width="928" src="/baseline/images/layer_5.png" "Layer 0">
 </p>
+从卷积神经网络的子层，我们很难判断问题出现在哪里。
