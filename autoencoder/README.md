@@ -11,7 +11,7 @@
 ## 1 自编码器AutoEncoder
 首先，我们采用简单的AutoEncoder：
 <p align="center">
-  <img width="700" src="/autocoder/AE/images/autoencoder.jpg" "Auto Encoder">
+  <img width="700" src="/autoencoder/AE/images/autoencoder.jpg" "Auto Encoder">
 </p>
 ## 2 带分类条件的自编码器AC-AutoEncoder
 
