@@ -226,7 +226,7 @@ class Autoencoder():
 
         callbacks_list = [checkpoint2]
 
-        self.model.fit(
+        history = self.model.fit(
             [x_train_rnd, y_train_rnd],
             [x_train, y_train],
             batch_size=batch_size,
@@ -236,6 +236,7 @@ class Autoencoder():
             validation_data=([x_test, y_test], [x_test, y_test]),
             callbacks=callbacks_list
         )
+        return history
 
     def plot_model(self, run_folder):
         print("")

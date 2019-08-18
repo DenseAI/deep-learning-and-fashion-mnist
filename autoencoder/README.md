@@ -10,9 +10,35 @@
 
 ## 1 自编码器AutoEncoder
 首先，我们采用简单的AutoEncoder：
+
 <p align="center">
   <img width="700" src="/autoencoder/AE/images/autoencoder.jpg" "Auto Encoder">
 </p>
+
+分类采用Cosine Similarity的计算方式，预测时与训练集比较，取相似度最高的样本的分类：
+```
+def cosine_similarity(vector1, vector2):
+    dot_product = 0.0
+    normA = 0.0
+    normB = 0.0
+    for a, b in zip(vector1, vector2):
+        dot_product += a * b
+        normA += a ** 2
+        normB += b ** 2
+    if normA == 0.0 or normB == 0.0:
+        return 0
+    else:
+        return round(dot_product / ((normA**0.5)*(normB**0.5)) * 100, 2)
+```
+
+混淆矩阵如下：
+<p align="center">
+  <img width="640" src="/autoencoder/AE/images/ae_confusion_matrix.png" "mobilenet_acc">
+</p>
+
+从上面的结果看，简单Auto Encoder，无法满足分类要求。
+
+
 ## 2 带分类条件的自编码器AC-AutoEncoder
 
 ## 3 量子化自编码器VQ-VAE
