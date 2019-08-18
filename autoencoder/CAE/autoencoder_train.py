@@ -93,7 +93,7 @@ model_train_history = AE.train(x_train_append, y_train_append,
 
 # Plot training & validation accuracy values
 
-#print(model_train_history.history)
+print(model_train_history.history)
 plt.plot(model_train_history.history['model_2_acc_1'])
 plt.plot(model_train_history.history['val_model_2_acc_1'])
 plt.title('Model accuracy')

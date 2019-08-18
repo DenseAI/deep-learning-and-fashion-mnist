@@ -39,7 +39,58 @@ def cosine_similarity(vector1, vector2):
 从上面的结果看，简单Auto Encoder，无法满足分类要求。
 
 
-## 2 带分类条件的自编码器AC-AutoEncoder
+
+## 2 带分类的自编码器AC-AutoEncoder
+单纯的AutoEncoder，没有包含分类信息，所以准确率比较低，所以我们在AutoEncoder的基础上，包含分类信息
+```
+	### THE ENCODER
+	encoder_input = Input(shape=self.input_dim, name='encoder_input')
+
+	x = encoder_input
+
+	for i in range(self.n_layers_encoder):
+		conv_layer = Conv2D(
+			filters=self.encoder_conv_filters[i],
+			kernel_size=self.encoder_conv_kernel_size[i],
+			strides=self.encoder_conv_strides[i],
+			padding='same',
+			name='encoder_conv_' + str(i)
+		)
+
+		x = conv_layer(x)
+		x = LeakyReLU()(x)
+
+		if self.use_batch_norm:
+			x = BatchNormalization()(x)
+
+		if self.use_dropout:
+			x = Dropout(rate=0.25)(x)
+
+	shape_before_flattening = K.int_shape(x)[1:]
+
+	x = Flatten()(x)
+	encoder_output = Dense(self.z_dim, name='encoder_output')(x)
+
+	#包含分类信息
+	label = Input(shape=(1,), dtype='int32')
+	label_embedding = Flatten()(Embedding(self.num_classes, self.z_dim)(label))
+	encoder_output = multiply([encoder_output, label_embedding])
+
+	self.encoder = Model([encoder_input, label], encoder_output)
+```
+准确率如下：
+<p align="center">
+  <img width="640" src="/autoencoder/AE/images/cae_acc.png" "cae_acc">
+</p>
+Loss如下：
+<p align="center">
+  <img width="640" src="/autoencoder/AE/images/cae_loss.png" "cae_acc">
+</p>
+混淆矩阵如下：
+<p align="center">
+  <img width="640" src="/autoencoder/AE/images/cae_confusion_matrix.png" "cae_acc">
+</p>
+
 
 ## 3 量子化自编码器VQ-VAE
 
