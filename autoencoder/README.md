@@ -80,15 +80,15 @@ def cosine_similarity(vector1, vector2):
 ```
 准确率如下：
 <p align="center">
-  <img width="640" src="/autoencoder/AE/images/cae_acc.png" "cae_acc">
+  <img width="640" src="/autoencoder/CAE/images/cae_acc.png" "cae_acc">
 </p>
 Loss如下：
 <p align="center">
-  <img width="640" src="/autoencoder/AE/images/cae_loss.png" "cae_acc">
+  <img width="640" src="/autoencoder/CAE/images/cae_loss.png" "cae_acc">
 </p>
 混淆矩阵如下：
 <p align="center">
-  <img width="640" src="/autoencoder/AE/images/cae_confusion_matrix.png" "cae_acc">
+  <img width="640" src="/autoencoder/CAE/images/cae_confusion_matrix.png" "cae_acc">
 </p>
 
 
