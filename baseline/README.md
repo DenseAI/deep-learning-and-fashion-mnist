@@ -20,6 +20,7 @@ Loss如下：
   <img width="640" src="/baseline/cnn/images/cnn_confusion_matrix.png" "cnn_acc">
 </p>
 详细报表如下：
+```python
               precision    recall  f1-score   support
 
            0       0.92      0.85      0.88      1000
@@ -36,7 +37,7 @@ Loss如下：
    micro avg       0.94      0.94      0.94     10000
    macro avg       0.94      0.94      0.94     10000
 weighted avg       0.94      0.94      0.94     10000
-
+```
 
 ## 2 MobileNet
 @苏剑林的Fashion-Mnist例子，我修改了MobileNet，在不加载预训练权重，准确率（最高为0.9322，在加载预训练权重下可以最高0.9440左右）如下：
@@ -57,6 +58,7 @@ Loss如下：
   <img width="640" src="/baseline/mobilenet/images/mobilenet_confusion_matrix.png" "mobilenet_acc">
 </p>
 详细报表如下：
+```python
               precision    recall  f1-score   support
 
            0       0.88      0.85      0.86      1000
@@ -70,10 +72,10 @@ Loss如下：
            8       0.99      0.98      0.99      1000
            9       0.98      0.96      0.97      1000
 
-11    micro avg       0.93      0.93      0.93     10000
-12    macro avg       0.93      0.93      0.93     10000
-13 weighted avg       0.93      0.93      0.93     10000
-
+    micro avg       0.93      0.93      0.93     10000
+    macro avg       0.93      0.93      0.93     10000
+ weighted avg       0.93      0.93      0.93     10000
+```
 
 
 ## 3 Wide Resnet
@@ -95,13 +97,15 @@ Loss如下：
 
 
 ## 4 问题汇总
+
+#### 问题1 分类间相互干扰
 1、分类间相互干扰，特别0、2、4、6之间，它们之间的干扰如何形成？在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
 分析了部分预测错误的例子：
 <p align="center">
   <img width="928" src="/baseline/images/predicted_false.png" "predicted_false">
 </p>
 
-### 类别标注
+#### 类别标注
 每个训练和测试样本都按照以下类别进行了标注：
 
 | 标注编号 | 描述 |
@@ -116,6 +120,6 @@ Loss如下：
 | 7 | Sneaker（运动鞋）|
 | 8 | Bag（包）|
 | 9 | Ankle boot（踝靴）|
-
-
-T恤0与汗衫6，相互干扰最大，通过肉眼观察，T恤是短袖且无扣子/无拉链，汗衫部分短袖，但有扣子或者拉链
+<p>
+1.1 T恤0与汗衫6，相互干扰最大，通过肉眼观察，T恤是短袖且无扣子/无拉链，汗衫部分短袖，但有扣子或者拉链
+</p>
