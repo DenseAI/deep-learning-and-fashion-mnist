@@ -100,3 +100,22 @@ Loss如下：
 <p align="center">
   <img width="928" src="/baseline/images/predicted_false.png" "predicted_false">
 </p>
+
+### 类别标注
+每个训练和测试样本都按照以下类别进行了标注：
+
+| 标注编号 | 描述 |
+| --- | --- |
+| 0 | T-shirt/top（T恤）|
+| 1 | Trouser（裤子）|
+| 2 | Pullover（套衫）|
+| 3 | Dress（裙子）|
+| 4 | Coat（外套）|
+| 5 | Sandal（凉鞋）|
+| 6 | Shirt（汗衫）|
+| 7 | Sneaker（运动鞋）|
+| 8 | Bag（包）|
+| 9 | Ankle boot（踝靴）|
+
+
+T恤0与汗衫6，相互干扰最大，通过肉眼观察，T恤是短袖且无扣子/无拉链，汗衫部分短袖，但有扣子或者拉链
