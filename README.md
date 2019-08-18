@@ -25,7 +25,8 @@ MobileNet(加载预训练权重):
 <p align="center">
   <img width="640" src="/baseline/mobilenet/images/mobilenet_confusion_matrix.png" "mobilenet_acc">
 </p>
-
+#### 问题分析
+详见 [基线](https://github.com/DenseAI/deep-learning-and-fashion-mnist/tree/master/baseline)
 
 ## 参考
 
