@@ -19,7 +19,16 @@ MobileNet(加载预训练权重):
 <p align="center">
   <img width="640" src="/baseline/mobilenet/images/mobilenet_acc2.png" "mobilenet_acc">
 </p>
+<p>
+混淆矩阵:
+</>
+<p align="center">
+  <img width="640" src="/baseline/mobilenet/images/mobilenet_confusion_matrix.png" "mobilenet_acc">
+</p>
+
+
 ## 参考
+
 - [zalandoresearch/fashion-mnist ](https://github.com/zalandoresearch/fashion-mnist)
 - [fashion mnist的一个baseline (MobileNet 95%) ](https://kexue.fm/archives/4556)
 - [Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
