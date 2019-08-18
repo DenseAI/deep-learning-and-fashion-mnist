@@ -20,7 +20,8 @@ Loss如下：
   <img width="640" src="/baseline/cnn/images/cnn_confusion_matrix.png" "cnn_acc">
 </p>
 详细报表如下：
-```python
+
+```
               precision    recall  f1-score   support
 
            0       0.92      0.85      0.88      1000
