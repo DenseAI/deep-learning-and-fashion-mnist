@@ -36,7 +36,16 @@ M=2 混淆矩阵如下：
 SphereFace在M=2时，准确率最高为95.32%，比卷积神经网络基线版本，提升与1.17%。
 
 ## 3 ArcFace
+论文[2]原名是ArcFace，但是由于与虹软重名，后改名为Insight Face，截止2018年3月，是MegaFace榜第一，达到了98.36%的成绩。
+M=0.5、2、4 的准确率如下：
+<p align="center">
+  <img width="640" src="/loss/arcface/images/arcface_val_acc.png" "arc-softmax_acc">
+</p>
 
+M=0.5 混淆矩阵如下：
+<p align="center">
+  <img width="640" src="/loss/arcface/images/arcface_confusion_matrix_0.5.png" "arc-softmax_acc">
+</p>
 
 ## 参考
 
