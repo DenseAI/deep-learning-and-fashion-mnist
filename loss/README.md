@@ -19,17 +19,18 @@
   <img width="640" src="/loss/softmax/images/softmax_confusion_matrix.png" "softmax_acc">
 </p>
 
-
+卷积神经网络作为基线算法，准确率最高为94.15%。
 
 ## 2 SphereFace
 [1]是CVPR2017的文章，用改进的softmax做人脸识别，改进点是提出了angular softmax loss（A-softmax loss）用来改进原来的softmax loss。
-M=2 准确率如下：
+M=2、4、6 的准确率如下：
 <p align="center">
-  <img width="640" src="/loss/arcface/images/sphere_acc_2.png" "a-softmax_acc">
+  <img width="640" src="/loss/arcface/images/sphereface_val_acc.png" "a-softmax_acc">
 </p>
+
 M=2 混淆矩阵如下：
 <p align="center">
-  <img width="640" src="/loss/softmax/images/sphere_confusion_matrix_2.png" "a-softmax_acc">
+  <img width="640" src="/loss/arcface/images/sphere_confusion_matrix_2.png" "a-softmax_acc">
 </p>
 
 
