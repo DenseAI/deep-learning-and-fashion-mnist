@@ -43,8 +43,9 @@ SphereFace在M=2时，准确率最高为95.32%，比卷积神经网络基线版�
 - [4uiiurz1/keras-arcface ](https://github.com/4uiiurz1/keras-arcface)
 - [auroua/InsightFace_TF ](https://github.com/auroua/InsightFace_TF)
 - [YunYang1994/SphereFace](https://github.com/YunYang1994/SphereFace)
-
+- [wujiyang/Face_Pytorch](https://github.com/wujiyang/Face_Pytorch)
 
 
 ## 论文
-- [1] Weiyang Liu, Yandong Wen, Zhiding Yu, Ming Li, Bhiksha Raj, Le Song [SphereFace: Deep Hypersphere Embedding for Face Recognition](https://arxiv.org/abs/1704.08063) 
+- [1] Weiyang Liu, Yandong Wen, Zhiding Yu, Ming Li, Bhiksha Raj, Le Song. ["SphereFace: Deep Hypersphere Embedding for Face Recognition"](https://arxiv.org/abs/1704.08063) 
+- [2] Jiankang Deng, Jia Guo, Niannan Xue, Stefanos Zafeiriou. ["ArcFace: Additive Angular Margin Loss for Deep Face Recognition"](https://arxiv.org/abs/1801.07698)

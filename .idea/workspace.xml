@@ -10,11 +10,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/loss/arcface/ArcFace.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="804">
-              <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
+            <state relative-caret-position="1326">
+              <caret line="90" column="23" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="23" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -22,11 +22,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="129" column="29" selection-start-line="129" selection-start-column="29" selection-end-line="129" selection-end-column="29" />
+            <state relative-caret-position="454">
+              <caret line="240" column="47" selection-start-line="149" selection-end-line="240" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -68,17 +80,17 @@
         <option value="$PROJECT_DIR$/autoencoder/VQVAE/vqvae_train.py" />
         <option value="$PROJECT_DIR$/autoencoder/VQVAE/vqvae_analysis.py" />
         <option value="$PROJECT_DIR$/loss/softmax/fashion_mnist_softmax.py" />
-        <option value="$PROJECT_DIR$/loss/arcface/ArcFace.py" />
-        <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py" />
         <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py" />
+        <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py" />
+        <option value="$PROJECT_DIR$/loss/arcface/ArcFace.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-49" />
-    <option name="y" value="442" />
+    <option name="x" value="806" />
+    <option name="y" value="17" />
     <option name="width" value="1746" />
-    <option name="height" value="1000" />
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -158,7 +170,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fashion_mnist_sphereface">
+  <component name="RunManager" selected="Python.fashion_mnist_arcface">
     <configuration name="ArcFace" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -266,9 +278,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.fashion_mnist_sphereface" />
         <item itemvalue="Python.fashion_mnist_arcface" />
         <item itemvalue="Python.ArcFace" />
+        <item itemvalue="Python.fashion_mnist_sphereface" />
         <item itemvalue="Python.fashion_mnist_softmax" />
         <item itemvalue="Python.vqvae_analysis" />
       </list>
@@ -289,6 +301,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -589,10 +602,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="240" column="47" selection-start-line="149" selection-end-line="240" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="182" column="33" selection-start-line="182" selection-start-column="33" selection-end-line="182" selection-end-column="33" />
+        <state relative-caret-position="233">
+          <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
@@ -601,18 +621,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loss/arcface/ArcFace.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
+        <state relative-caret-position="1326">
+          <caret line="90" column="23" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="23" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="129" column="29" selection-start-line="129" selection-start-column="29" selection-end-line="129" selection-end-column="29" />
         </state>
       </provider>
     </entry>
