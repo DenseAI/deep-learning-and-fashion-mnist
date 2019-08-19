@@ -5,7 +5,7 @@
 ## 目录
 - [1 SoftMax](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
 - [2 SphereFace](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
-- [3 根因分析-Loss函数](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
+- [3 ArcFace](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
 
 ## 1 SoftMax
 在基线算法中卷积神经网络，采用了SoftMax函数，
@@ -33,8 +33,9 @@ M=2 混淆矩阵如下：
   <img width="640" src="/loss/arcface/images/sphere_confusion_matrix_2.png" "a-softmax_acc">
 </p>
 
+SphereFace在M=2时，准确率最高为95.32%，比卷积神经网络基线版本，提升与1.17%。
 
-## 3 根因分析-Loss函数
+## 3 ArcFace
 
 
 ## 参考
