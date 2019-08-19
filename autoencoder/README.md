@@ -141,7 +141,8 @@ weighted avg       0.91      0.92      0.91      1000
 
 - [The official code repository for examples in the O'Reilly book 'Generative Deep Learning' ](https://github.com/davidADSP/GDL_code)
 - [SpikeKing/triplet-loss-mnist ](https://github.com/SpikeKing/triplet-loss-mnist)
-- [Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
+- [HenningBuhl/VQ-VAE_Keras_Implementation](https://github.com/HenningBuhl/VQ-VAE_Keras_Implementation)
 - [zhunzhong07/Random-Erasing ](https://github.com/zhunzhong07/Random-Erasing)
 
 ## 论文
+- [Neural Discrete Representation Learning](https://arxiv.org/abs/1711.00937) Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu
