@@ -4,7 +4,7 @@
 
 ## 目录
 - [1 SoftMax](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
-- [2 ArcFace](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
+- [2 SphereFace](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
 - [3 根因分析-Loss函数](https://github.com/DenseAI/deep-learning-and-fashion-mnist#1-数据集基线)
 
 ## 1 SoftMax
@@ -21,29 +21,28 @@
 
 
 
-## 2 根因分析-生成模式
+## 2 SphereFace
+[1]是CVPR2017的文章，用改进的softmax做人脸识别，改进点是提出了angular softmax loss（A-softmax loss）用来改进原来的softmax loss。
+M=2 准确率如下：
+<p align="center">
+  <img width="640" src="/loss/arcface/images/sphere_acc_2.png" "a-softmax_acc">
+</p>
+M=2 混淆矩阵如下：
+<p align="center">
+  <img width="640" src="/loss/softmax/images/sphere_confusion_matrix_2.png" "a-softmax_acc">
+</p>
 
-#### 2.1 自编码器AutoEncoder
-#### 2.2 带分类条件的自编码器AC-AutoEncoder
-#### 2.3 量子化自编码器VQ-VAE
-#### 2.4 基于Triplet loss的编码器
 
 ## 3 根因分析-Loss函数
 
-#### 3.1 SoftMax
-#### 3.2 Center-Loss 
-#### 3.3 L-SoftMax
-#### 3.3 Norm-Loss
-#### 3.4 Coco-Loss
-#### 3.5 Arc-Loss
 
 ## 参考
 
 - [4uiiurz1/keras-arcface ](https://github.com/4uiiurz1/keras-arcface)
 - [auroua/InsightFace_TF ](https://github.com/auroua/InsightFace_TF)
 - [YunYang1994/SphereFace](https://github.com/YunYang1994/SphereFace)
-- [zhunzhong07/Random-Erasing ](https://github.com/zhunzhong07/Random-Erasing)
+
 
 
 ## 论文
-- Weiyang Liu, Yandong Wen, Zhiding Yu, Ming Li, Bhiksha Raj, Le Song [SphereFace: Deep Hypersphere Embedding for Face Recognition](https://arxiv.org/abs/1704.08063) 
+- [1] Weiyang Liu, Yandong Wen, Zhiding Yu, Ming Li, Bhiksha Raj, Le Song [SphereFace: Deep Hypersphere Embedding for Face Recognition](https://arxiv.org/abs/1704.08063) 
