@@ -146,3 +146,4 @@ weighted avg       0.91      0.92      0.91      1000
 
 ## 论文
 - [Neural Discrete Representation Learning](https://arxiv.org/abs/1711.00937) Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu
+- [Generating Diverse High-Fidelity Images with VQ-VAE-2](https://arxiv.org/abs/1906.00446) Ali Razavi, Aaron van den Oord, Oriol Vinyals
