@@ -10,7 +10,7 @@
 ## 1 SoftMax
 在基线算法中卷积神经网络，采用了SoftMax函数，
 
-Loss如下：
+准确率如下：
 <p align="center">
   <img width="640" src="/loss/softmax/images/softmax_acc.png" "softmax_acc">
 </p>
@@ -39,7 +39,11 @@ Loss如下：
 
 ## 参考
 
-- [zalandoresearch/fashion-mnist ](https://github.com/zalandoresearch/fashion-mnist)
-- [fashion mnist的一个baseline (MobileNet 95%) ](https://kexue.fm/archives/4556)
-- [Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
+- [4uiiurz1/keras-arcface ](https://github.com/4uiiurz1/keras-arcface)
+- [auroua/InsightFace_TF ](https://github.com/auroua/InsightFace_TF)
+- [YunYang1994/SphereFace](https://github.com/YunYang1994/SphereFace)
 - [zhunzhong07/Random-Erasing ](https://github.com/zhunzhong07/Random-Erasing)
+
+
+## 论文
+- Weiyang Liu, Yandong Wen, Zhiding Yu, Ming Li, Bhiksha Raj, Le Song [SphereFace: Deep Hypersphere Embedding for Face Recognition](https://arxiv.org/abs/1704.08063) 
