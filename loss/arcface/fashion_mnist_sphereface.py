@@ -20,7 +20,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from keras.models import Model
 
-from ArcFace import ArcFace, SphereFace, SoftMax
+from ArcFace import ArcFace, SphereFace, CosFace
 
 
 weight_decay = 1e-4
@@ -90,7 +90,9 @@ y_train_categorical = keras.utils.to_categorical(y_train, num_classes)
 #y_val_categorical = keras.utils.to_categorical(y_val, num_classes)
 y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
-m = 4
+
+loss_name = "sphereface"
+m = 2
 
 def create_model():
     learn_rate = 1
@@ -127,7 +129,7 @@ model = create_model()
 model.summary()
 
 
-checkpoint_path = 'sphereface-weights.ckpt'
+checkpoint_path = './weights/{}-weights.ckpt'.format(loss_name)
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
 cp_callback =  ModelCheckpoint(checkpoint_path,
@@ -136,7 +138,7 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
                                  period=1) #  save weights every 1 epochs
 
 batch_size = 128
-epochs = 50
+epochs = 100
 y_train = y_train.astype("int32")
 y_test = y_test.astype("int32")
 model_train_history = model.fit([x_train_with_channels, y_train], y_train_categorical,
@@ -160,8 +162,8 @@ plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
-plt.savefig('./images/sphere_acc_{}.png'.format(m))
-plt.show()
+plt.savefig('./images/{}_acc_{}.png'.format(loss_name, m))
+#plt.show()
 
 # Plot training & validation loss values
 plt.plot(model_train_history.history['loss'])
@@ -171,8 +173,8 @@ plt.ylabel('Loss')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
-plt.savefig('./images/sphere_loss_{}.png'.format(m))
-plt.show()
+plt.savefig('./images/{}_loss_{}.png'.format(loss_name, m))
+#plt.show()
 
 
 prediction_classes = model.predict([x_test_with_channels,y_test])
@@ -231,7 +233,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout();
-    plt.savefig('./images/sphere_confusion_matrix_{}.png'.format(m))
+    plt.savefig('./images/{}_confusion_matrix_{}.png'.format(loss_name, m))
 
 
 # return ax

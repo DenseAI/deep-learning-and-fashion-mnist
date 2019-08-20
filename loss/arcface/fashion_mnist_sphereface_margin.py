@@ -20,7 +20,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from keras.models import Model
 
-from ArcFace import ArcFace, SphereFace, CosFace
+from ArcFace import ArcFace, SphereFace, CosFace, SphereMargin
 
 
 weight_decay = 1e-4
@@ -47,7 +47,7 @@ sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
 K.set_session(sess)
 
 num_classes = 10
-
+loss_name = "sphereface_margin"
 # image dimensions
 img_rows, img_cols = 28, 28
 
@@ -90,8 +90,9 @@ y_train_categorical = keras.utils.to_categorical(y_train, num_classes)
 #y_val_categorical = keras.utils.to_categorical(y_val, num_classes)
 y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
-loss_name = "arcface"
-m=0.5
+
+m = 2
+
 def create_model():
     learn_rate = 1
 
@@ -114,7 +115,7 @@ def create_model():
     x = Dropout(0.5)(x)
 
 
-    output = ArcFace(10, m=m, regularizer=regularizers.l2(weight_decay))([x, input_label])
+    output = SphereMargin(10, m=m, regularizer=regularizers.l2(weight_decay))([x, input_label])
     model = Model([input_img,input_label], output)
 
     model.compile(loss=keras.losses.categorical_crossentropy,
@@ -127,7 +128,7 @@ model = create_model()
 model.summary()
 
 
-checkpoint_path = './weights/{}-weights.ckpt'.format(loss_name)
+checkpoint_path = '{}-weights.ckpt'.format(loss_name)
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
 cp_callback =  ModelCheckpoint(checkpoint_path,
@@ -171,7 +172,7 @@ plt.ylabel('Loss')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
-plt.savefig('./images/{}_loss_{}.png'.format(loss_name, m))
+plt.savefig('./images/{}_loss_{}.png'.format(loss_name,m))
 plt.show()
 
 
@@ -231,7 +232,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout();
-    plt.savefig('./images/{}_confusion_matrix_{}.png'.format(loss_name, m))
+    plt.savefig('./images/{}_confusion_matrix_{}.png'.format(loss_name,m))
 
 
 # return ax
