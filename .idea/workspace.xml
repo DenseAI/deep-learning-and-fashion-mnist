@@ -25,10 +25,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="180" selection-start-line="180" selection-end-line="181" selection-end-column="56" />
+            <state relative-caret-position="319">
+              <caret line="162" column="57" lean-forward="true" selection-start-line="162" selection-start-column="57" selection-end-line="162" selection-end-column="57" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="53" selection-start-line="53" selection-end-line="68" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -47,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/autoencoder/VQVAE/VQVAE.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="427">
-              <caret line="288" column="35" lean-forward="true" selection-start-line="288" selection-start-column="8" selection-end-line="288" selection-end-column="35" />
+              <caret line="288" column="35" selection-start-line="288" selection-start-column="8" selection-end-line="288" selection-end-column="35" />
               <folding>
                 <element signature="e#25#186#0" expanded="true" />
               </folding>
@@ -58,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/loss/arcface/sphereface_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="111" column="33" lean-forward="true" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+            <state relative-caret-position="253">
+              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -70,8 +82,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="210" column="53" lean-forward="true" selection-start-line="141" selection-end-line="210" selection-end-column="53" />
+            <state relative-caret-position="709">
+              <caret line="210" column="53" selection-start-line="141" selection-end-line="210" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="59" selection-start-line="59" selection-end-line="61" selection-end-column="36" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -83,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/autoencoder/TripletLoss/TripletLoss.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="274" column="54" lean-forward="true" selection-start-line="274" selection-start-column="22" selection-end-line="274" selection-end-column="54" />
+              <caret line="274" column="54" selection-start-line="274" selection-start-column="22" selection-end-line="274" selection-end-column="54" />
               <folding>
                 <element signature="e#106#115#0" expanded="true" />
               </folding>
@@ -129,15 +153,15 @@
         <option value="$PROJECT_DIR$/autoencoder/VQVAE/vqvae_analysis.py" />
         <option value="$PROJECT_DIR$/loss/softmax/fashion_mnist_softmax.py" />
         <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface_margin.py" />
-        <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py" />
         <option value="$PROJECT_DIR$/loss/arcface/ArcFace.py" />
         <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py" />
         <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_cosface.py" />
+        <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py" />
         <option value="$PROJECT_DIR$/loss/arcface/sphereface_analysis.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="69" />
     <option name="y" value="413" />
     <option name="width" value="1746" />
@@ -165,43 +189,18 @@
               <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
               <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
               <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
-              <item name="AE" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
-              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
-              <item name="AE" type="462c0819:PsiDirectoryNode" />
-              <item name="run" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
-              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
-              <item name="AE" type="462c0819:PsiDirectoryNode" />
-              <item name="run" type="462c0819:PsiDirectoryNode" />
-              <item name="vae" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
-              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
-              <item name="AE" type="462c0819:PsiDirectoryNode" />
-              <item name="run" type="462c0819:PsiDirectoryNode" />
-              <item name="vae" type="462c0819:PsiDirectoryNode" />
-              <item name="0001_digits" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
-              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
-              <item name="TripletLoss" type="462c0819:PsiDirectoryNode" />
+              <item name="CAE" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
               <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
               <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
               <item name="VQVAE" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
+              <item name="baseline" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
@@ -389,14 +388,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26898047" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37418655" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -527,16 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="56" column="20" lean-forward="true" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/autoencoder/TripletLoss/TripletModel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -580,16 +568,6 @@
           <caret line="121" selection-start-line="121" selection-end-line="121" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -700,7 +678,7 @@
     <entry file="file://$PROJECT_DIR$/autoencoder/VQVAE/VQVAE.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
-          <caret line="288" column="35" lean-forward="true" selection-start-line="288" selection-start-column="8" selection-end-line="288" selection-end-column="35" />
+          <caret line="288" column="35" selection-start-line="288" selection-start-column="8" selection-end-line="288" selection-end-column="35" />
           <folding>
             <element signature="e#25#186#0" expanded="true" />
           </folding>
@@ -727,7 +705,7 @@
     <entry file="file://$PROJECT_DIR$/autoencoder/TripletLoss/TripletLoss.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="274" column="54" lean-forward="true" selection-start-line="274" selection-start-column="22" selection-end-line="274" selection-end-column="54" />
+          <caret line="274" column="54" selection-start-line="274" selection-start-column="22" selection-end-line="274" selection-end-column="54" />
           <folding>
             <element signature="e#106#115#0" expanded="true" />
           </folding>
@@ -736,18 +714,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="210" column="53" lean-forward="true" selection-start-line="141" selection-end-line="210" selection-end-column="53" />
+        <state relative-caret-position="709">
+          <caret line="210" column="53" selection-start-line="141" selection-end-line="210" selection-end-column="53" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="59" selection-start-line="59" selection-end-line="61" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="53" selection-start-line="53" selection-end-line="68" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="180" selection-start-line="180" selection-end-line="181" selection-end-column="56" />
+        <state relative-caret-position="319">
+          <caret line="162" column="57" lean-forward="true" selection-start-line="162" selection-start-column="57" selection-end-line="162" selection-end-column="57" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
@@ -756,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loss/arcface/sphereface_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="111" column="33" lean-forward="true" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+        <state relative-caret-position="253">
+          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

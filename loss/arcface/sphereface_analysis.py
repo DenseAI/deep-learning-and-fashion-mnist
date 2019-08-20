@@ -104,18 +104,40 @@ loss_name = "sphereface"
 
 model.load_weights(os.path.join(RUN_FOLDER, 'weights/{}-weights.ckpt'.format(loss_name)))
 
-y_test_rnd = []
+x_test_append = []
+y_test_append = []
+y_test_rnd_append = []
 for ii in range(len(y_test)):
-    label = random.randrange(0, 10)
-    y_test_rnd.append(label)
+    for jj in range(10):
+        label = random.randrange(0, 10)
+        x_test_append.append(x_test[ii])
+        y_test_append.append(y_test[ii])
+        y_test_rnd_append.append(jj)
 
-y_test_rnd = np.array(y_test_rnd)
+x_test_append = np.array(x_test_append)
+y_test_append = np.array(y_test_append)
+y_test_rnd_append = np.array(y_test_rnd_append)
 
+prediction_classes = model.predict([x_test_append, y_test_rnd_append])
 
-prediction_classes = model.predict([x_test, y_test])
+print(prediction_classes)
 
-prediction_classes = np.argmax(prediction_classes, axis=1)
-print(classification_report(y_test, prediction_classes))
+y_preds = []
+preds = np.zeros(10)
+for ii in range(len(prediction_classes)):
+    preds = preds + prediction_classes[ii]
+    if(ii > 0 and ii % 10 == 0):
+        y_preds.append(preds)
+        preds = np.zeros(10)
+    elif(ii == (len(prediction_classes) - 1)):
+        y_preds.append(preds)
+
+y_preds = np.array(y_preds)
+#print(y_test[0])
+print(y_preds.shape)
+
+y_preds = np.argmax(y_preds, axis=1)
+print(classification_report(y_test, y_preds))
 
 def plot_confusion_matrix(y_true, y_pred, classes,
                           normalize=False,

@@ -137,8 +137,45 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
                                  save_weights_only=True,
                                  period=1) #  save weights every 1 epochs
 
+
+
+# n_to_show = 10000
+# example_idx = np.random.choice(range(len(x_train_with_channels)), n_to_show)
+# example_images = x_train_with_channels[example_idx]
+# example_labels = y_train[example_idx]
+#
+#
+# x_train_append = []
+# y_train_append = []
+# y_train_random_append = []
+# num_classes = 10
+# for ii in range(example_images.shape[0]):
+#     x = example_images[ii]
+#     y = example_labels[ii]
+#     #x_train_append(x)
+#     for jj in range(num_classes):
+#         x_train_append.append(x)
+#         y_train_append.append(y)
+#         y_train_random_append.append(jj)
+#
+# x_train_append = np.array(x_train_append)
+# y_train_append = np.array(y_train_append)
+# y_train_random_append = np.array(y_train_random_append)
+
+
+# y_train_append_categorical = keras.utils.to_categorical(y_train_append, num_classes)
+# #y_val_categorical = keras.utils.to_categorical(y_val, num_classes)
+# y_train_random_append_categorical = keras.utils.to_categorical(y_train_random_append, num_classes)
+
+y_test_rnd = []
+for ii in range(len(y_test)):
+    label = random.randrange(0, 10)
+    y_test_rnd.append(label)
+
+y_test_rnd = np.array(y_test_rnd)
+
 batch_size = 128
-epochs = 100
+epochs = 50
 y_train = y_train.astype("int32")
 y_test = y_test.astype("int32")
 model_train_history = model.fit([x_train_with_channels, y_train], y_train_categorical,
