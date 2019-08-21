@@ -1,5 +1,5 @@
 from keras.models import Model
-from keras.layers import Input, Add, Activation, Dropout, Flatten, Dense, merge, Concatenate, Conv2D
+from keras.layers import Input, Add, Activation, Dropout, Flatten, Dense, merge, Concatenate, Conv2D, Embedding, multiply
 from keras.layers.convolutional import Convolution2D, MaxPooling2D, AveragePooling2D
 from keras.layers.normalization import BatchNormalization
 from keras.activations import relu
@@ -17,7 +17,7 @@ dropout_probability = 0 # table 6 on page 10 indicates best value (4.17) CIFAR-1
 weight_decay = 0.0005   # page 10: "Used in all experiments"
 
 # Other config from code; throughtout all layer:
-use_bias = False        # following functions 'FCinit(model)' and 'DisableBias(model)' in utils.lua
+use_bias = True        # following functions 'FCinit(model)' and 'DisableBias(model)' in utils.lua
 weight_init="he_normal" # follows the 'MSRinit(model)' function in utils.lua
 
 
@@ -123,12 +123,64 @@ def create_wide_residual_network(input_shape, depth=28, nb_classes=10, k=2, drop
 
     # Classifier block
     pool = AveragePooling2D(pool_size=(8, 8), strides=(1, 1), border_mode="same")(relu)
-    flatten = Flatten()(pool)
+    x = Flatten()(pool)
+    x = Dense(128, activation='relu')(x)
+    #x = multiply([x, label_embedding])
+    x = BatchNormalization()(x)
+    x = Dropout(0.5)(x)
     predictions = Dense(output_dim=nb_classes, init=weight_init, bias=use_bias,
-                        W_regularizer=l2(weight_decay), activation="softmax")(flatten)
+                        W_regularizer=l2(weight_decay), activation="softmax")(x)
 
     model = Model(input=inputs, output=predictions)
     return model
+
+
+def create_wide_residual_network_with_label(input_shape, depth=28, nb_classes=10, k=2, dropoutRate=0.0):
+    logging.debug("Creating model...")
+
+    assert ((depth - 4) % 6 == 0)
+    n = (depth - 4) / 6
+
+    input_label = Input(shape=(1,), dtype='int32')
+    label_embedding = Flatten()(Embedding(nb_classes, 128)(input_label))
+
+    input_img = Input(shape=input_shape)
+
+    n_stages = [16, 16 * k, 32 * k, 64 * k]
+
+    conv1 = Conv2D(nb_filter=n_stages[0],
+                   kernel_size = (3,3),
+                   strides=(1, 1),
+                   padding="same",
+                   init=weight_init,
+                   W_regularizer=l2(weight_decay),
+                   use_bias=use_bias)(input_img)  # "One conv at the beginning (spatial size: 32x32)"
+
+    # Add wide residual blocks
+    block_fn = _wide_basic
+    conv2 = _layer(block_fn, n_input_plane=n_stages[0], n_output_plane=n_stages[1], count=n, stride=(1, 1), dropoutRate=dropoutRate)(
+        conv1)  # "Stage 1 (spatial size: 32x32)"
+    conv3 = _layer(block_fn, n_input_plane=n_stages[1], n_output_plane=n_stages[2], count=n, stride=(2, 2), dropoutRate=dropoutRate)(
+        conv2)  # "Stage 2 (spatial size: 16x16)"
+    conv4 = _layer(block_fn, n_input_plane=n_stages[2], n_output_plane=n_stages[3], count=n, stride=(2, 2), dropoutRate=dropoutRate)(
+        conv3)  # "Stage 3 (spatial size: 8x8)"
+
+    batch_norm = BatchNormalization(axis=channel_axis)(conv4)
+    relu = Activation("relu")(batch_norm)
+
+    # Classifier block
+    pool = AveragePooling2D(pool_size=(8, 8), strides=(1, 1), border_mode="same")(relu)
+    x = Flatten()(pool)
+    x = Dense(128, activation='relu')(x)
+    x = multiply([x, label_embedding])
+    x = BatchNormalization()(x)
+    x = Dropout(0.5)(x)
+    predictions = Dense(output_dim=nb_classes, init=weight_init, bias=use_bias,
+                        W_regularizer=l2(weight_decay), activation="softmax")(x)
+
+    model = Model(input=[input_img, input_label], output=predictions)
+    return model
+
 
 
 if __name__ == "__main__":

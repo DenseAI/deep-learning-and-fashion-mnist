@@ -10,49 +10,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loss/arcface/ArcFace.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn_label_embeding.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="97" column="18" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
+            <state relative-caret-position="398">
+              <caret line="141" column="24" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/baseline/wrn/wide_residual_network.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="137" column="43" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="43" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="136" selection-start-line="136" selection-end-line="136" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loss/arcface/sphereface_analysis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,15 +52,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/baseline.py" />
-        <option value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py" />
         <option value="$PROJECT_DIR$/baseline/mobilenet/mobilenet.py" />
         <option value="$PROJECT_DIR$/baseline/mobilenet/fashion_mnist_mobilenet.py" />
-        <option value="$PROJECT_DIR$/baseline/wrn/wide_residual_network.py" />
-        <option value="$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py" />
         <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_train.py" />
         <option value="$PROJECT_DIR$/autoencoder/AE/AE.py" />
         <option value="$PROJECT_DIR$/autoencoder/AE/autoencoder_analysis.py" />
-        <option value="$PROJECT_DIR$/autoencoder/CAE/CAE.py" />
         <option value="$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py" />
         <option value="$PROJECT_DIR$/autoencoder/tripletloss/TripletLoss.py" />
         <option value="$PROJECT_DIR$/autoencoder/TripletLoss/base.py" />
@@ -111,12 +80,20 @@
         <option value="$PROJECT_DIR$/loss/arcface/ArcFace.py" />
         <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py" />
         <option value="$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py" />
+        <option value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_modified_softmax.py" />
+        <option value="$PROJECT_DIR$/baseline/cnn/layers.py" />
+        <option value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py" />
+        <option value="$PROJECT_DIR$/autoencoder/CAE/CAE.py" />
+        <option value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_label_embedding.py" />
+        <option value="$PROJECT_DIR$/baseline/wrn/wide_residual_network.py" />
+        <option value="$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn_label_embeding.py" />
+        <option value="$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="181" />
-    <option name="y" value="1" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1746" />
     <option name="height" value="1047" />
   </component>
@@ -135,6 +112,17 @@
             <path>
               <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
               <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
+              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
+              <item name="autoencoder" type="462c0819:PsiDirectoryNode" />
+              <item name="CAE" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
               <item name="baseline" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -142,6 +130,12 @@
               <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
               <item name="baseline" type="462c0819:PsiDirectoryNode" />
               <item name="cnn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deep-learning-and-fashion-mnist" type="462c0819:PsiDirectoryNode" />
+              <item name="baseline" type="462c0819:PsiDirectoryNode" />
+              <item name="wrn" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deep-learning-and-fashion-mnist" type="b2602c69:ProjectViewProjectNode" />
@@ -163,15 +157,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/loss/arcface" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/baseline/wrn" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\wrn" />
+      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\baseline\cnn" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\loss\arcface" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\loss\softmax" />
       <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\autoencoder\VQVAE" />
-      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\autoencoder\TripletLoss" />
-      <recent name="E:\Research\Github\deep-learning-and-fashion-mnist\autoencoder\tripletloss" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -186,8 +180,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fashion_mnist_arcface">
-    <configuration name="fashion_mnist_arcface" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.fashion_mnist_wrn_label_embeding">
+    <configuration name="fashion_mnist_cnn" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -195,11 +189,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/loss/arcface" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baseline/cnn" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -208,7 +202,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fashion_mnist_sphereface" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="fashion_mnist_cnn_label_embedding" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -216,11 +210,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/loss/arcface" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baseline/cnn" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_label_embedding.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -229,7 +223,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fashion_mnist_sphereface_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="fashion_mnist_cnn_modified_softmax" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -237,11 +231,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/loss/arcface" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baseline/cnn" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface_3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_modified_softmax.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -250,7 +244,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fashion_mnist_sphereface_4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="fashion_mnist_wrn" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -258,11 +252,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/loss/arcface" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baseline/wrn" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface_4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -271,7 +265,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sphereface_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="fashion_mnist_wrn_label_embeding" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="deep-learning-and-fashion-mnist" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -279,11 +273,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/loss/arcface" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baseline/wrn" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loss/arcface/sphereface_analysis.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn_label_embeding.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -294,11 +288,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.fashion_mnist_arcface" />
-        <item itemvalue="Python.fashion_mnist_sphereface" />
-        <item itemvalue="Python.sphereface_analysis" />
-        <item itemvalue="Python.fashion_mnist_sphereface_4" />
-        <item itemvalue="Python.fashion_mnist_sphereface_3" />
+        <item itemvalue="Python.fashion_mnist_wrn_label_embeding" />
+        <item itemvalue="Python.fashion_mnist_wrn" />
+        <item itemvalue="Python.fashion_mnist_cnn_label_embedding" />
+        <item itemvalue="Python.fashion_mnist_cnn_modified_softmax" />
+        <item itemvalue="Python.fashion_mnist_cnn" />
       </list>
     </recent_temporary>
   </component>
@@ -317,14 +311,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19336143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3449024" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4208243" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -369,41 +362,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/baseline.py" />
-    <entry file="file://$PROJECT_DIR$/baseline/mobilenet/mobilenet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8024">
-          <caret line="524" column="40" selection-start-line="524" selection-start-column="40" selection-end-line="524" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baseline/mobilenet/fashion_mnist_mobilenet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2482">
-          <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baseline/wrn/wide_residual_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="149" column="92" selection-start-line="149" selection-start-column="81" selection-end-line="149" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-734">
@@ -501,13 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/CAE.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="236" column="21" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/engine/training.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -590,26 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="59" selection-start-line="59" selection-end-line="61" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="53" selection-start-line="53" selection-end-line="68" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/autoencoder/TripletLoss/TripletLoss.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3045">
@@ -663,16 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/layers/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="830" column="8" selection-start-line="830" selection-start-column="8" selection-end-line="830" selection-end-column="8" />
-          <folding>
-            <element signature="e#50#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface_2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -694,26 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="101" selection-start-line="101" selection-end-line="106" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loss/arcface/layers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="131" column="8" selection-start-line="131" selection-start-column="8" selection-end-line="132" selection-end-column="79" />
-          <folding>
-            <element signature="e#1#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="103" column="54" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,16 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loss/arcface/sphereface_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loss/arcface/ArcFace.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -771,13 +662,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py">
+    <entry file="file://$PROJECT_DIR$/loss/arcface/layers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
+        <state relative-caret-position="269">
+          <caret line="131" column="8" selection-start-line="131" selection-start-column="8" selection-end-line="132" selection-end-column="79" />
+          <folding>
+            <element signature="e#1#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/layers/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="908" lean-forward="true" selection-start-line="766" selection-end-line="908" />
+          <folding>
+            <element signature="e#50#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/layers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1418">
+          <caret line="131" selection-start-line="131" selection-end-line="131" />
+          <folding>
+            <element signature="e#1#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_modified_softmax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_arcface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="121" column="39" selection-start-line="116" selection-start-column="4" selection-end-line="121" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/CAE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="68" column="55" selection-start-line="53" selection-end-line="68" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoencoder/CAE/autoencoder_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="823">
+          <caret line="58" selection-start-line="58" selection-end-line="61" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loss/arcface/sphereface_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="108" selection-start-line="108" selection-end-line="114" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="102" column="27" lean-forward="true" selection-start-line="100" selection-start-column="4" selection-end-line="102" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/wrn/wide_residual_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="137" column="43" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_label_embedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="164" column="100" lean-forward="true" selection-start-line="164" selection-start-column="32" selection-end-line="164" selection-end-column="100" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/wrn/fashion_mnist_wrn_label_embeding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="141" column="24" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
         </state>
       </provider>
     </entry>

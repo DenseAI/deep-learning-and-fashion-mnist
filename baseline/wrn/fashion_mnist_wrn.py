@@ -57,7 +57,10 @@ def load_data_from_keras():
 
 (x_train, y_train), (x_test, y_test) = load_data_from_keras()
 
-
+# n_to_show = 10000
+# example_idx = np.random.choice(range(len(x_train)), n_to_show)
+# x_train = x_train[example_idx]
+# y_train = y_train[example_idx]
 
 #x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.1, random_state=0)
 
@@ -92,7 +95,7 @@ model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["acc"]
 model.summary()
 
 
-checkpoint_path = 'cp-{epoch:04d}.ckpt'
+checkpoint_path = './weights/weight.ckpt'
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
 cp_callback =  ModelCheckpoint(checkpoint_path,
@@ -101,13 +104,14 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
                                  period=1) #  save weights every 1 epochs
 
 batch_size = 128
-epochs = 50
+epochs = 150
 
 model_train_history = model.fit(x_train_with_channels, y_train_categorical,
-          batch_size=batch_size,
-          epochs=epochs,
-          verbose=1,
-          validation_data=(x_test_with_channels, y_test_categorical))
+								batch_size=batch_size,
+								epochs=epochs,
+								verbose=1,
+								validation_data=(x_test_with_channels, y_test_categorical),
+								callbacks=[cp_callback])
 
 
 # Plot training & validation accuracy values
@@ -138,11 +142,10 @@ prediction_classes = np.argmax(prediction_classes, axis=1)
 print(classification_report(y_test, prediction_classes))
 
 
-
 def plot_confusion_matrix(y_true, y_pred, classes,
-                          normalize=False,
-                          title=None,
-                          cmap=plt.cm.Blues):
+						  normalize=False,
+						  title=None,
+						  cmap=plt.cm.Blues):
 	"""
     This function prints and plots the confusion matrix.
     Normalization can be applied by setting `normalize=True`.
@@ -156,7 +159,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
 	# Compute confusion matrix
 	cm = confusion_matrix(y_true, y_pred)
 	# Only use the labels that appear in the data
-	#classes = classes[unique_labels(y_true, y_pred)]
+	# classes = classes[unique_labels(y_true, y_pred)]
 	if normalize:
 		cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 		print("Normalized confusion matrix")
@@ -191,12 +194,10 @@ def plot_confusion_matrix(y_true, y_pred, classes,
 					color="white" if cm[i, j] > thresh else "black")
 	fig.tight_layout();
 	plt.savefig('./images/wide_resnet_confusion_matrix.png')
-	#return ax
+
+
+# return ax
 
 # Plot confusion matrix
 plot_confusion_matrix(y_test, prediction_classes, classes=classes, normalize=False,
-                      title='confusion matrix')
-
-
-
-
+					  title='confusion matrix')

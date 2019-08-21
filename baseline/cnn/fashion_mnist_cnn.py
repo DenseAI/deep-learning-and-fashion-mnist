@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import keras
 import tensorflow as tf
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, BatchNormalization
+from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Input
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
 from keras.callbacks import ModelCheckpoint
@@ -113,7 +113,7 @@ model = create_model()
 model.summary()
 
 
-checkpoint_path = 'cp-{epoch:04d}.ckpt'
+checkpoint_path = './weights/cnn_weight.ckpt'
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
 cp_callback =  ModelCheckpoint(checkpoint_path,
@@ -125,11 +125,17 @@ batch_size = 128
 epochs = 50
 
 model_train_history = model.fit(x_train_with_channels, y_train_categorical,
-          batch_size=batch_size,
-          epochs=epochs,
-          verbose=1,
-          validation_data=(x_test_with_channels, y_test_categorical))
+                                batch_size=batch_size,
+                                epochs=epochs,
+                                verbose=1,
+                                validation_data=(x_test_with_channels, y_test_categorical),
+                                callbacks=[cp_callback])
 
+
+print(model_train_history.history['acc'])
+print(model_train_history.history['val_acc'])
+print(model_train_history.history['loss'])
+print(model_train_history.history['val_loss'])
 
 # Plot training & validation accuracy values
 plt.plot(model_train_history.history['acc'])
@@ -159,65 +165,62 @@ prediction_classes = np.argmax(prediction_classes, axis=1)
 print(classification_report(y_test, prediction_classes))
 
 
-
 def plot_confusion_matrix(y_true, y_pred, classes,
                           normalize=False,
                           title=None,
                           cmap=plt.cm.Blues):
-	"""
+    """
     This function prints and plots the confusion matrix.
     Normalization can be applied by setting `normalize=True`.
     """
-	if not title:
-		if normalize:
-			title = 'Normalized confusion matrix'
-		else:
-			title = 'Confusion matrix, without normalization'
+    if not title:
+        if normalize:
+            title = 'Normalized confusion matrix'
+        else:
+            title = 'Confusion matrix, without normalization'
 
-	# Compute confusion matrix
-	cm = confusion_matrix(y_true, y_pred)
-	# Only use the labels that appear in the data
-	#classes = classes[unique_labels(y_true, y_pred)]
-	if normalize:
-		cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-		print("Normalized confusion matrix")
-	else:
-		print('Confusion matrix, without normalization')
+    # Compute confusion matrix
+    cm = confusion_matrix(y_true, y_pred)
+    # Only use the labels that appear in the data
+    # classes = classes[unique_labels(y_true, y_pred)]
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
 
-	print(cm)
+    print(cm)
 
-	fig, ax = plt.subplots()
-	im = ax.imshow(cm, interpolation='nearest', cmap=cmap)
-	ax.figure.colorbar(im, ax=ax)
-	# We want to show all ticks...
-	ax.set(xticks=np.arange(cm.shape[1]),
-		   yticks=np.arange(cm.shape[0]),
-		   # ... and label them with the respective list entries
-		   xticklabels=classes, yticklabels=classes,
-		   title=title,
-		   ylabel='True label',
-		   xlabel='Predicted label')
+    fig, ax = plt.subplots()
+    im = ax.imshow(cm, interpolation='nearest', cmap=cmap)
+    ax.figure.colorbar(im, ax=ax)
+    # We want to show all ticks...
+    ax.set(xticks=np.arange(cm.shape[1]),
+           yticks=np.arange(cm.shape[0]),
+           # ... and label them with the respective list entries
+           xticklabels=classes, yticklabels=classes,
+           title=title,
+           ylabel='True label',
+           xlabel='Predicted label')
 
-	# Rotate the tick labels and set their alignment.
-	plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-			 rotation_mode="anchor")
+    # Rotate the tick labels and set their alignment.
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+             rotation_mode="anchor")
 
-	# Loop over data dimensions and create text annotations.
-	fmt = '.2f' if normalize else 'd'
-	thresh = cm.max() / 2.
-	for i in range(cm.shape[0]):
-		for j in range(cm.shape[1]):
-			ax.text(j, i, format(cm[i, j], fmt),
-					ha="center", va="center",
-					color="white" if cm[i, j] > thresh else "black")
-	fig.tight_layout();
-	plt.savefig('./images/cnn_confusion_matrix.png')
-	#return ax
+    # Loop over data dimensions and create text annotations.
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            ax.text(j, i, format(cm[i, j], fmt),
+                    ha="center", va="center",
+                    color="white" if cm[i, j] > thresh else "black")
+    fig.tight_layout();
+    plt.savefig('./images/cnn_confusion_matrix.png')
+
+
+# return ax
 
 # Plot confusion matrix
 plot_confusion_matrix(y_test, prediction_classes, classes=classes, normalize=False,
                       title='confusion matrix')
-
-
-
-
