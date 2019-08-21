@@ -1,6 +1,7 @@
 from keras import backend as K
 from keras.layers import Layer
 from keras import regularizers
+from keras.engine import InputSpec
 
 import tensorflow as tf
 import math
@@ -16,6 +17,7 @@ class ArcFace(Layer):
         self.easy_margin = easy_margin
 
     def build(self, input_shape):
+        print("input_shape: ", input_shape)
         super(ArcFace, self).build(input_shape[0])
         self.W = self.add_weight(name='W',
                                 shape=(input_shape[0][-1], self.n_classes),
@@ -158,7 +160,7 @@ class SphereMargin(Layer):
         # one_hot = tf.zeros_like(cos_theta)
         # one_hot.scatter_(1, label.view(-1, 1), 1)
 
-        output = label * phi_theta_ + (1 - label) * cos_theta
+        output = (label+1) * phi_theta_ + (1 - (label+1)) * cos_theta
         #output = tf.multiply(output, norm_of_feature)
 
         output = tf.nn.softmax(output)

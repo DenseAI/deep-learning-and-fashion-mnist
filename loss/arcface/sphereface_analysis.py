@@ -120,7 +120,8 @@ y_test_rnd_append = np.array(y_test_rnd_append)
 
 prediction_classes = model.predict([x_test_append, y_test_rnd_append])
 
-print(prediction_classes)
+print(prediction_classes[0:10])
+
 
 y_preds = []
 preds = np.zeros(10)

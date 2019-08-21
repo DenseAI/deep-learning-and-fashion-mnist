@@ -92,14 +92,17 @@ y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
 
 loss_name = "sphereface"
-m = 2
+m = 1.5
+
+s = 30.0
+
 
 def create_model():
     learn_rate = 1
 
     # Encoder
     input_img = Input(shape=(28, 28, 1))
-    input_label = Input(shape=(1,))
+    input_label = Input(shape=(10,))
     x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(input_img)
     x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(x)
     x = MaxPooling2D(pool_size=(2, 2))(x)
@@ -116,7 +119,7 @@ def create_model():
     x = Dropout(0.5)(x)
 
 
-    output = SphereFace(10, m=m)([x, input_label])
+    output = SphereFace(10, m=m, regularizer=regularizers.l2(weight_decay))([x, input_label])
     model = Model([input_img,input_label], output)
 
     model.compile(loss=keras.losses.categorical_crossentropy,
@@ -167,22 +170,22 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
 # #y_val_categorical = keras.utils.to_categorical(y_val, num_classes)
 # y_train_random_append_categorical = keras.utils.to_categorical(y_train_random_append, num_classes)
 
-y_test_rnd = []
-for ii in range(len(y_test)):
-    label = random.randrange(0, 10)
-    y_test_rnd.append(label)
-
-y_test_rnd = np.array(y_test_rnd)
+# y_test_rnd = []
+# for ii in range(len(y_test)):
+#     label = random.randrange(0, 10)
+#     y_test_rnd.append(label)
+#
+# y_test_rnd = np.array(y_test_rnd)
 
 batch_size = 128
-epochs = 50
+epochs = 10
 y_train = y_train.astype("int32")
 y_test = y_test.astype("int32")
-model_train_history = model.fit([x_train_with_channels, y_train], y_train_categorical,
+model_train_history = model.fit([x_train_with_channels, y_train_categorical], y_train_categorical,
                                 batch_size=batch_size,
                                 epochs=epochs,
                                 verbose=1,
-                                validation_data=([x_test_with_channels, y_test], y_test_categorical),
+                                validation_data=([x_test_with_channels, y_test_categorical], y_test_categorical),
                                 callbacks=[cp_callback])
 
 
@@ -214,7 +217,7 @@ plt.savefig('./images/{}_loss_{}.png'.format(loss_name, m))
 #plt.show()
 
 
-prediction_classes = model.predict([x_test_with_channels,y_test])
+prediction_classes = model.predict([x_test_with_channels,y_train_categorical])
 prediction_classes = np.argmax(prediction_classes, axis=1)
 print(classification_report(y_test, prediction_classes))
 

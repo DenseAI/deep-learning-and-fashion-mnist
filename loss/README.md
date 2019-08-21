@@ -57,6 +57,7 @@ ArcFace在M=0.5时，准确率最高为94.28%，比卷积神经网络基线版�
 - [wujiyang/Face_Pytorch](https://github.com/wujiyang/Face_Pytorch)
 - [Kakoedlinnoeslovo/center_loss ](https://github.com/Kakoedlinnoeslovo/center_loss)
 - [clcarwin/sphereface_pytorch](https://github.com/clcarwin/sphereface_pytorch)
+- [YirongMao/softmax_variants](https://github.com/YirongMao/softmax_variants)
 
 ## 论文
 - [1] Weiyang Liu, Yandong Wen, Zhiding Yu, Ming Li, Bhiksha Raj, Le Song. ["SphereFace: Deep Hypersphere Embedding for Face Recognition"](https://arxiv.org/abs/1704.08063) 
