@@ -97,7 +97,7 @@ Loss如下：
 <p align="center">
   <img width="640" src="/baseline/wrn/images/wide_resnet_confusion_matrix.png" "wide_resnet_acc">
 </p>
-我们只跑了50轮，在[测试例子中](https://github.com/zhunzhong07/Random-Erasing/issues/9)，第152轮开始达到0.950，并在272轮时达到0.9580的最高值。
+我们只跑了50轮，在[测试例子中](https://github.com/zhunzhong07/Random-Erasing/issues/9) 第152轮开始达到0.950，并在272轮时达到0.9580的最高值。
 
 
 

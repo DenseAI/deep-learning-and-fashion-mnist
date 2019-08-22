@@ -179,6 +179,8 @@ def create_wide_residual_network_with_label(input_shape, depth=28, nb_classes=10
                         W_regularizer=l2(weight_decay), activation="softmax")(x)
 
     model = Model(input=[input_img, input_label], output=predictions)
+
+
     return model
 
 

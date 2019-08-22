@@ -64,6 +64,6 @@ ArcFace在M=0.5时，准确率最高为94.28%，比卷积神经网络基线版�
 - [2] Jiankang Deng, Jia Guo, Niannan Xue, Stefanos Zafeiriou. ["ArcFace: Additive Angular Margin Loss for Deep Face Recognition"](https://arxiv.org/abs/1801.07698)
 - [3] Hao Wang, Yitong Wang, Zheng Zhou, Xing Ji, Dihong Gong, Jingchao Zhou, Zhifeng Li, Wei Liu. ["CosFace: Large Margin Cosine Loss for Deep Face Recognition"](https://arxiv.org/abs/1801.09414)
 - [4] Liu, Weiyang and Lin, Rongmei and Liu, Zhen and Liu, Lixin and Yu, Zhiding and Dai, Bo and Song, Le. ["Learning towards Minimum Hyperspherical Energy"](https://arxiv.org/abs/1805.09298) (SphereFace+ is described in Section 5.2 of the main paper)
-
+- [5] Zhong, Zhun and Zheng, Liang and Kang, Guoliang and Li, Shaozi and Yang, Yi. ["Random Erasing Data Augmentation"](https://arxiv.org/abs/1708.04896)
 
 
