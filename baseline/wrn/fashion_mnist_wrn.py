@@ -10,6 +10,18 @@ from keras import backend as K
 from keras.callbacks import ModelCheckpoint
 import os
 
+from keras.models import Model
+from keras.layers import Input, Activation, merge, Dense, Flatten, Add, add
+from keras.layers.convolutional import Convolution2D, AveragePooling2D
+from keras.layers.normalization import BatchNormalization
+from keras.optimizers import SGD
+from keras.regularizers import l2
+from keras.callbacks import LearningRateScheduler, ModelCheckpoint
+from keras.preprocessing.image import ImageDataGenerator
+from keras.utils import np_utils
+from keras import backend as K
+
+
 # Helper libraries
 import random
 import matplotlib.pyplot as plt
@@ -89,8 +101,106 @@ y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
 
 
+# n_to_show = 10000
+# example_idx = np.random.choice(range(len(x_train_with_channels)), n_to_show)
+# train_example_images = x_train_with_channels[example_idx]
+# train_example_labels = y_train_categorical[example_idx]
+#
+#
+# n_to_show = 1000
+# example_idx = np.random.choice(range(len(x_test_with_channels)), n_to_show)
+# test_example_images = x_test_with_channels[example_idx]
+# test_example_labels = y_test_categorical[example_idx]
 
-model = wrn.create_wide_residual_network(input_shape, depth=16, nb_classes=10, k=8, dropoutRate=0.15)
+DEPTH              = 28
+WIDE               = 10
+IN_FILTERS         = 16
+WEIGHT_DECAY       = 0.0005
+
+def wide_residual_network(img_input, classes_num=10, depth=16, k=8, dropoutRate=0):
+	print('Wide-Resnet %dx%d' % (depth, k))
+	n_filters = [16, 16 * k, 32 * k, 64 * k]
+	n_stack = (depth - 4) // 6
+
+	def conv3x3(x, filters):
+		return Conv2D(filters=filters, kernel_size=(3, 3), strides=(1, 1), padding='same',
+					  kernel_initializer='he_normal',
+					  kernel_regularizer=l2(WEIGHT_DECAY),
+					  use_bias=False)(x)
+
+	def bn_relu(x):
+		x = BatchNormalization(momentum=0.9, epsilon=1e-5)(x)
+		x = Activation('relu')(x)
+		return x
+
+	def residual_block(x, out_filters, increase=False):
+		global IN_FILTERS
+		stride = (1, 1)
+		if increase:
+			stride = (2, 2)
+
+		o1 = bn_relu(x)
+
+		conv_1 = Conv2D(out_filters,
+						kernel_size=(3, 3), strides=stride, padding='same',
+						kernel_initializer='he_normal',
+						kernel_regularizer=l2(WEIGHT_DECAY),
+						use_bias=False)(o1)
+
+		o2 = bn_relu(conv_1)
+
+		if dropoutRate > 0:
+			o2 = Dropout(dropoutRate)(o2)
+
+		conv_2 = Conv2D(out_filters,
+						kernel_size=(3, 3), strides=(1, 1), padding='same',
+						kernel_initializer='he_normal',
+						kernel_regularizer=l2(WEIGHT_DECAY),
+						use_bias=False)(o2)
+		if increase or IN_FILTERS != out_filters:
+			proj = Conv2D(out_filters,
+						  kernel_size=(1, 1), strides=stride, padding='same',
+						  kernel_initializer='he_normal',
+						  kernel_regularizer=l2(WEIGHT_DECAY),
+						  use_bias=False)(o1)
+			block = add([conv_2, proj])
+		else:
+			block = add([conv_2, x])
+		return block
+
+	def wide_residual_layer(x, out_filters, increase=False):
+		global IN_FILTERS
+		x = residual_block(x, out_filters, increase)
+		IN_FILTERS = out_filters
+		for _ in range(1, int(n_stack)):
+			x = residual_block(x, out_filters)
+		return x
+
+	x = conv3x3(img_input, n_filters[0])
+	x = wide_residual_layer(x, n_filters[1])
+	x = wide_residual_layer(x, n_filters[2], increase=True)
+	x = wide_residual_layer(x, n_filters[3], increase=True)
+	x = BatchNormalization(momentum=0.9, epsilon=1e-5)(x)
+	x = Activation('relu')(x)
+	x = AveragePooling2D((7, 7))(x)
+	x = Flatten()(x)
+	x = Dense(classes_num,
+			  activation='softmax',
+			  kernel_initializer='he_normal',
+			  kernel_regularizer=l2(WEIGHT_DECAY),
+			  use_bias=False)(x)
+	return x
+
+
+img_input = Input(shape=(28,28,1))
+
+model = wide_residual_network(img_input) #wrn.create_wide_residual_network(input_shape, depth=16, nb_classes=10, k=8, dropoutRate=0.25)
+
+
+img_input = Input(shape=(28,28,1))
+output = wide_residual_network(img_input)
+model = Model(img_input, output)
+
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["acc"])
 model.summary()
 
@@ -112,6 +222,7 @@ model_train_history = model.fit(x_train_with_channels, y_train_categorical,
 								verbose=1,
 								validation_data=(x_test_with_channels, y_test_categorical),
 								callbacks=[cp_callback])
+
 
 
 # Plot training & validation accuracy values

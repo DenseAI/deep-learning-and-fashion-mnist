@@ -44,7 +44,7 @@ def _wide_basic(n_input_plane, n_output_plane, stride, dropoutRate):
             convs = Activation("relu")(convs)
 
         convs = Conv2D(n_bottleneck_plane,   #conv1
-                       (3,3),
+                       3,
                        strides=stride,
                        padding="same",
                        init=weight_init,
@@ -55,8 +55,8 @@ def _wide_basic(n_input_plane, n_output_plane, stride, dropoutRate):
         if dropoutRate > 0:
             convs = Dropout(dropoutRate)(convs)
         convs = Conv2D(n_bottleneck_plane,   #conv2
-                       (3, 3),
-                       strides=(1,1),
+                       3,
+                       strides=1,
                        padding="same",
                        init=weight_init,
                        W_regularizer=l2(weight_decay),
@@ -68,7 +68,7 @@ def _wide_basic(n_input_plane, n_output_plane, stride, dropoutRate):
         #   group; see _layer() ).
         if n_input_plane != n_output_plane:
             shortcut = Conv2D(n_output_plane,  #convShortcut
-                              (1,1),
+                              1,
                               strides=stride,
                               padding="same",
                               init=weight_init,
@@ -102,8 +102,8 @@ def create_wide_residual_network(input_shape, depth=28, nb_classes=10, k=2, drop
     n_stages = [16, 16 * k, 32 * k, 64 * k]
 
     conv1 = Conv2D(nb_filter=n_stages[0],
-                   kernel_size = (3,3),
-                   strides=(1, 1),
+                   kernel_size = 3,
+                   strides=1,
                    padding="same",
                    init=weight_init,
                    W_regularizer=l2(weight_decay),
@@ -111,11 +111,11 @@ def create_wide_residual_network(input_shape, depth=28, nb_classes=10, k=2, drop
 
     # Add wide residual blocks
     block_fn = _wide_basic
-    conv2 = _layer(block_fn, n_input_plane=n_stages[0], n_output_plane=n_stages[1], count=n, stride=(1, 1), dropoutRate=dropoutRate)(
+    conv2 = _layer(block_fn, n_input_plane=n_stages[0], n_output_plane=n_stages[1], count=n, stride=1, dropoutRate=dropoutRate)(
         conv1)  # "Stage 1 (spatial size: 32x32)"
-    conv3 = _layer(block_fn, n_input_plane=n_stages[1], n_output_plane=n_stages[2], count=n, stride=(2, 2), dropoutRate=dropoutRate)(
+    conv3 = _layer(block_fn, n_input_plane=n_stages[1], n_output_plane=n_stages[2], count=n, stride=2, dropoutRate=dropoutRate)(
         conv2)  # "Stage 2 (spatial size: 16x16)"
-    conv4 = _layer(block_fn, n_input_plane=n_stages[2], n_output_plane=n_stages[3], count=n, stride=(2, 2), dropoutRate=dropoutRate)(
+    conv4 = _layer(block_fn, n_input_plane=n_stages[2], n_output_plane=n_stages[3], count=n, stride=2, dropoutRate=dropoutRate)(
         conv3)  # "Stage 3 (spatial size: 8x8)"
 
     batch_norm = BatchNormalization(axis=channel_axis)(conv4)

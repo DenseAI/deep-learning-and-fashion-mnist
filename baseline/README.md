@@ -159,3 +159,14 @@ Loss如下：
   <img width="928" src="/baseline/images/layer_5.png" "Layer 0">
 </p>
 从卷积神经网络的子层，我们很难判断问题出现在哪里。
+
+## 参考
+- [zalandoresearch](https://github.com/zalandoresearch/fashion-mnist)
+- [Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
+- [@苏剑林](http://kexue.fm/archives/4556/)
+- [zhunzhong07/Random-Erasing ](https://github.com/zhunzhong07/Random-Erasing)
+- [yungshun317/keras-cifar-10-wide-resnet ](https://github.com/yungshun317/keras-cifar-10-wide-resnet)
+- [sverneka/wide-resnet-cifar100-kaggle](https://github.com/sverneka/wide-resnet-cifar100-kaggle)
+
+## 论文
+- [1]Sergey Zagoruyko, Nikos Komodakis. ["Wide Residual Networks"](https://arxiv.org/abs/1605.07146)
