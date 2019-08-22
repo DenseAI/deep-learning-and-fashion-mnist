@@ -84,7 +84,7 @@ Loss如下：
 
 
 ## 3 Wide Resnet
-在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)的例子，准确率最高的前三位分别是
+在[zalandoresearch/fashion-mnist](https://github.com/zalandoresearch/fashion-mnist#benchmark)的例子，准确率最高的前三位分别是
 0.967、0.963、0.959，分别使用了Wide Resnet，我们参考了 @zhunzhong07 的例子，使用Keras实现了Wide Resnet，但准确率达不到Pytorch版的WideResnet，准确率如下：
 <p align="center">
   <img width="640" src="/baseline/wrn/images/wide_resnet_acc.png" "wide_resnet_acc">

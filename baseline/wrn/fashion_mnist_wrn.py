@@ -90,7 +90,7 @@ y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
 
 
-model = wrn.create_wide_residual_network(input_shape, depth=16, nb_classes=10, k=4, dropoutRate=0.25)
+model = wrn.create_wide_residual_network(input_shape, depth=16, nb_classes=10, k=8, dropoutRate=0.15)
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["acc"])
 model.summary()
 
@@ -104,7 +104,7 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
                                  period=1) #  save weights every 1 epochs
 
 batch_size = 128
-epochs = 150
+epochs = 200
 
 model_train_history = model.fit(x_train_with_channels, y_train_categorical,
 								batch_size=batch_size,

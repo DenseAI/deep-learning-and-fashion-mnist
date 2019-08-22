@@ -125,9 +125,8 @@ def create_wide_residual_network(input_shape, depth=28, nb_classes=10, k=2, drop
     pool = AveragePooling2D(pool_size=(8, 8), strides=(1, 1), border_mode="same")(relu)
     x = Flatten()(pool)
     x = Dense(128, activation='relu')(x)
-    #x = multiply([x, label_embedding])
     x = BatchNormalization()(x)
-    x = Dropout(0.5)(x)
+    x = Dropout(dropoutRate)(x)
     predictions = Dense(output_dim=nb_classes, init=weight_init, bias=use_bias,
                         W_regularizer=l2(weight_decay), activation="softmax")(x)
 
