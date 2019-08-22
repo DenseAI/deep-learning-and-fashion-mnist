@@ -169,4 +169,5 @@ Loss如下：
 - [sverneka/wide-resnet-cifar100-kaggle](https://github.com/sverneka/wide-resnet-cifar100-kaggle)
 
 ## 论文
-- [1]Sergey Zagoruyko, Nikos Komodakis. ["Wide Residual Networks"](https://arxiv.org/abs/1605.07146)
+- [1] Sergey Zagoruyko, Nikos Komodakis. ["Wide Residual Networks"](https://arxiv.org/abs/1605.07146)
+
