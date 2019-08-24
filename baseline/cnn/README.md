@@ -55,6 +55,8 @@ Loss如下：
 
 从结果来看，上述的各种优化算法差别不大，SGD、Adamax稍微好一点，准确率能够达到0.94以上。
 
+## 3 激活函数与参数初始化
+
 
 ## 参考
 - [An overview of gradient descent optimization algorithms](http://ruder.io/optimizing-gradient-descent/index.html)
