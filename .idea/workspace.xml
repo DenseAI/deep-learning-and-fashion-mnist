@@ -11,10 +11,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_kernels.py">
+        <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_error_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="146" selection-start-line="146" selection-end-line="146" />
+            <state relative-caret-position="-1326">
+              <caret line="105" column="37" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
               <folding>
                 <element signature="e#26#63#0" expanded="true" />
               </folding>
@@ -92,10 +92,11 @@
         <option value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_kernel.py" />
         <option value="$PROJECT_DIR$/baseline/cnn/networks.py" />
         <option value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_kernels.py" />
+        <option value="$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_error_learning.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1746" />
@@ -302,14 +303,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19336143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947312" visible="true" weight="0.38286334" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947312" visible="true" weight="0.27006507" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -354,16 +354,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/loss/arcface/fashion_mnist_sphereface_margin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="107" column="33" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/tensorflow/python/ops/math_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -693,16 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baseline/cnn/layers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="97" column="31" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="31" />
-          <folding>
-            <element signature="e#1#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_optimizers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -763,7 +743,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/baseline/cnn/networks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
+        <state relative-caret-position="506">
           <caret line="125" column="16" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="16" />
           <folding>
             <element signature="e#3#15#0" expanded="true" />
@@ -771,10 +751,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/layers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+          <folding>
+            <element signature="e#1#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_kernels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
+          <folding>
+            <element signature="e#26#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_error_learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1326">
+          <caret line="105" column="37" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
           <folding>
             <element signature="e#26#63#0" expanded="true" />
           </folding>
