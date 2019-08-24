@@ -13,7 +13,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baseline/cnn/networks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
+            <state relative-caret-position="139">
               <caret line="32" column="50" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="53" />
               <folding>
                 <element signature="e#3#15#0" expanded="true" />
@@ -22,20 +22,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/optimizers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="728">
+            <state relative-caret-position="881">
               <caret line="194" column="40" selection-start-line="194" selection-start-column="35" selection-end-line="194" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_optimizers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="164" column="33" selection-start-line="164" selection-start-column="33" selection-end-line="164" selection-end-column="33" />
+            <state relative-caret-position="312">
+              <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
               <folding>
                 <element signature="e#26#63#0" expanded="true" />
               </folding>
@@ -777,16 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_optimizers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="164" column="33" selection-start-line="164" selection-start-column="33" selection-end-line="164" selection-end-column="33" />
-          <folding>
-            <element signature="e#26#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/baseline/cnn/layers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -797,9 +787,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/optimizers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="881">
+          <caret line="194" column="40" selection-start-line="194" selection-start-column="35" selection-end-line="194" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/baseline/cnn/networks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
+        <state relative-caret-position="139">
           <caret line="32" column="50" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="53" />
           <folding>
             <element signature="e#3#15#0" expanded="true" />
@@ -807,10 +804,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/tensorflow/Lib/site-packages/keras/optimizers.py">
+    <entry file="file://$PROJECT_DIR$/baseline/cnn/fashion_mnist_cnn_optimizers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="194" column="40" selection-start-line="194" selection-start-column="35" selection-end-line="194" selection-end-column="40" />
+        <state relative-caret-position="312">
+          <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
+          <folding>
+            <element signature="e#26#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

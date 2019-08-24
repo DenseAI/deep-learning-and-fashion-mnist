@@ -108,7 +108,7 @@ y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 # adamax = Adamax
 # nadam = Nadam
 
-optimizer = "adagrad"
+optimizer = "sgd"
 model = create_base_cnn_model(input_shape)
 model.summary()
 

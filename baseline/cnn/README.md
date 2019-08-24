@@ -17,11 +17,11 @@ Fashion-Mnist数据集[zalandoresearch](https://github.com/zalandoresearch/fashi
 </p>
 Loss如下：
 <p align="center">
-  <img width="500" src="/baseline/cnn/images/base_cnn_loss.png" "cnn_acc">
+  <img width="500" src="/baseline/cnn/images/base_cnn_loss.png" "cnn_loss">
 </p>
 混淆矩阵如下：
 <p align="center">
-  <img width="500" src="/baseline/cnn/images/base_cnn_confusion_matrix.png" "cnn_acc">
+  <img width="500" src="/baseline/cnn/images/base_cnn_confusion_matrix.png" "cnn_confusion_matrix">
 </p>
 详细报表如下：
 
@@ -44,8 +44,26 @@ Loss如下：
 weighted avg       0.94      0.94      0.94     10000
 ```
 ## 2 优化算法
-### 2.1 随机梯度下降SGD
+我们分别采用了SGD、RMSprop、Adagrad[3]、Adadelta[1]、Adam[2]、Adamax优化算法，采用Keras的默认系数，准确率如下：
+<p align="center">
+  <img width="500" src="/baseline/cnn/images/all_optimizers_cnn_acc.png" "optimizer_acc">
+</p>
+Loss如下：
+<p align="center">
+  <img width="500" src="/baseline/cnn/images/all_optimizers_cnn_loss.png" "optimizer_acc">
+</p>
 
-x \leftarrow  x - \eta \bigtriangledown f(x)
+
+## 参考
+- [An overview of gradient descent optimization algorithms](http://ruder.io/optimizing-gradient-descent/index.html)
+- [动量法](http://zh.d2l.ai/chapter_optimization/momentum.html)
+- [AdaGrad算法](http://zh.d2l.ai/chapter_optimization/adagrad.html)
+- [RMSProp算法](http://zh.d2l.ai/chapter_optimization/rmsprop.html)
+- [AdaDelta算法](http://zh.d2l.ai/chapter_optimization/adadelta.html)
+- [Adam算法](http://zh.d2l.ai/chapter_optimization/adam.html)
+## 论文
+- [1] Zeiler, M. D. (2012). ADADELTA: An Adaptive Learning Rate Method. Retrieved from [http://arxiv.org/abs/1212.5701](http://arxiv.org/abs/1212.5701) 
+- [2] Kingma, D. P., & Ba, J. L. (2015). Adam: a Method for Stochastic Optimization. International Conference on Learning Representations, 1–13.
+- [3] Bengio, Y., Boulanger-Lewandowski, N., & Pascanu, R. (2012). Advances in Optimizing Recurrent Networks. Retrieved from [http://arxiv.org/abs/1212.0901](http://arxiv.org/abs/1212.0901)
 
 
