@@ -53,7 +53,7 @@ Loss如下：
   <img width="900" src="/baseline/cnn/images/all_optimizers_cnn_loss.png" "optimizer_acc">
 </p>
 
-从结果来看，上述的各种优化算法差别不大，SGD、Adamax稍微好一点，准确率能够达到0.94以上。
+从结果来看，上述的各种优化算法除了SGD差别不大，Adamax稍微好一点，准确率能够达到0.94以上。SGD通常训练时间更长，但是在好的初始化和学习率调度方案的情况下，结果更可靠。
 
 ## 3 激活函数与参数初始化
 

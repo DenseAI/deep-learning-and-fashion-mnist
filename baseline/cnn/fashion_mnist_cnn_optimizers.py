@@ -19,7 +19,7 @@ from sklearn.metrics import confusion_matrix
 from keras.preprocessing.image import ImageDataGenerator
 
 from base_utils import plot_confusion_matrix, AdvancedLearnignRateScheduler, get_random_eraser
-from networks import create_base_cnn_model
+from networks import create_base_cnn_model, create_base_cnn_model_with_optimizer
 
 
 
@@ -108,8 +108,8 @@ y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 # adamax = Adamax
 # nadam = Nadam
 
-optimizer = "sgd"
-model = create_base_cnn_model(input_shape)
+optimizer = "Adamax"
+model = create_base_cnn_model_with_optimizer(input_shape, optimizer=optimizer)
 model.summary()
 
 
