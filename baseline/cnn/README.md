@@ -1,4 +1,4 @@
-# Fashion-Mnist数据集基线
+# Fashion-Mnist数据集卷积神经网络(CNN)基线
 
 在[zalandoresearch](https://github.com/zalandoresearch/fashion-mnist)官方库，列举了部分基线算法，我们挑选部分算法进行实现。
 
@@ -12,15 +12,15 @@
 ## 1 卷积神经网络(CNN)
 在[Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)的例子，准确率（最高为0.9415）如下：
 <p align="center">
-  <img width="640" src="/baseline/cnn/images/base_cnn_acc.png" "cnn_acc">
+  <img width="320" src="/baseline/cnn/images/base_cnn_acc.png" "cnn_acc">
 </p>
 Loss如下：
 <p align="center">
-  <img width="640" src="/baseline/cnn/images/base_cnn_loss.png" "cnn_acc">
+  <img width="320" src="/baseline/cnn/images/base_cnn_loss.png" "cnn_acc">
 </p>
 混淆矩阵如下：
 <p align="center">
-  <img width="640" src="/baseline/cnn/images/base_cnn_confusion_matrix.png" "cnn_acc">
+  <img width="320" src="/baseline/cnn/images/base_cnn_confusion_matrix.png" "cnn_acc">
 </p>
 详细报表如下：
 
