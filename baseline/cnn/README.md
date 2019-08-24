@@ -46,8 +46,8 @@ weighted avg       0.94      0.94      0.94     10000
 ## 2 优化算法
 ### 2.1 随机梯度下降SGD
 <p align="center">
-```
+
 x \leftarrow  x - \eta \bigtriangledown f(x)
-```
+
 </p>
 
