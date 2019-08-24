@@ -46,12 +46,14 @@ weighted avg       0.94      0.94      0.94     10000
 ## 2 优化算法
 我们分别采用了SGD、RMSprop、Adagrad[3]、Adadelta[1]、Adam[2]、Adamax优化算法，采用Keras的默认系数，准确率如下：
 <p align="center">
-  <img width="500" src="/baseline/cnn/images/all_optimizers_cnn_acc.png" "optimizer_acc">
+  <img width="1000" src="/baseline/cnn/images/all_optimizers_cnn_acc.png" "optimizer_acc">
 </p>
 Loss如下：
 <p align="center">
-  <img width="500" src="/baseline/cnn/images/all_optimizers_cnn_loss.png" "optimizer_acc">
+  <img width="1000" src="/baseline/cnn/images/all_optimizers_cnn_loss.png" "optimizer_acc">
 </p>
+
+从结果来看，上述的各种优化算法差别不大，SGD、Adamax稍微好一点，准确率能够达到0.94以上。
 
 
 ## 参考
