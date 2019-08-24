@@ -50,7 +50,7 @@ weighted avg       0.94      0.94      0.94     10000
 </p>
 Loss如下：
 <p align="center">
-  <img width="1000" src="/baseline/cnn/images/all_optimizers_cnn_loss.png" "optimizer_acc">
+  <img width="900" src="/baseline/cnn/images/all_optimizers_cnn_loss.png" "optimizer_acc">
 </p>
 
 从结果来看，上述的各种优化算法差别不大，SGD、Adamax稍微好一点，准确率能够达到0.94以上。
