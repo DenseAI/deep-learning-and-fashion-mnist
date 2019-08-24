@@ -1,13 +1,12 @@
+
+# -*- coding:utf-8 -*-
+
+
 from __future__ import print_function
-import pandas as pd
-from sklearn.model_selection import train_test_split
 import keras
 import tensorflow as tf
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Input
-from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
-from keras.callbacks import ModelCheckpoint
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 import os
 
 # Helper libraries
@@ -17,6 +16,16 @@ import numpy as np
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 
+from keras.preprocessing.image import ImageDataGenerator
+
+from base_utils import plot_confusion_matrix, AdvancedLearnignRateScheduler, get_random_eraser
+from networks import create_base_cnn_model
+
+
+
+###################################################################
+###  配置 Tensorflow                                            ###
+###################################################################
 # Seed value
 # Apparently you may use different seed values at each stage
 seed_value= 0
@@ -38,14 +47,17 @@ session_conf = tf.ConfigProto(intra_op_parallelism_threads=1, inter_op_paralleli
 sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
 K.set_session(sess)
 
+
+###################################################################
+###  读取训练、测试数据                                           ###
+###################################################################
 num_classes = 10
 
 # image dimensions
 img_rows, img_cols = 28, 28
 
 classes = ["Top", "Trouser", "Pullover", "Dress", "Coat",
-	"Sandal", "Shirt", "Sneaker", "Bag", "Ankle Boot"]
-
+           "Sandal", "Shirt", "Sneaker", "Bag", "Ankle Boot"]
 
 def load_data_from_keras():
     # get data using tf.keras.datasets. Train and test set is automatically split from datasets
@@ -54,8 +66,6 @@ def load_data_from_keras():
 
 
 (x_train, y_train), (x_test, y_test) = load_data_from_keras()
-
-
 
 #x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.1, random_state=0)
 
@@ -82,60 +92,108 @@ y_train_categorical = keras.utils.to_categorical(y_train, num_classes)
 #y_val_categorical = keras.utils.to_categorical(y_val, num_classes)
 y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
-def create_model():
-    learn_rate = 1
-
-    model = Sequential()
-
-    model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=input_shape, padding = 'same'))
-    model.add(Conv2D(32, (3, 3), activation='relu', padding = 'same'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
-
-    model.add(Conv2D(64, (3, 3), activation='relu', padding = 'same'))
-    model.add(Conv2D(64, (3, 3), activation='relu', padding = 'same'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
-
-    model.add(Flatten())
-    model.add(Dense(128, activation='relu'))
-    model.add(BatchNormalization())
-    model.add(Dropout(0.5))
-    model.add(Dense(num_classes, activation='softmax'))
-
-    model.compile(loss=keras.losses.categorical_crossentropy,
-                  optimizer=keras.optimizers.Adadelta(lr=learn_rate),
-                  metrics=['accuracy'])
-    return model
 
 
-model = create_model()
+
+###################################################################
+###  创建模型                                                    ###
+###################################################################
+
+model = create_base_cnn_model(input_shape)
 model.summary()
 
 
-checkpoint_path = './weights/cnn_weight.ckpt'
+model_name = "base_cnn"
+loss_value = 'val_acc'
+checkpoint_path = './weights/{}_weight.ckpt'.format(model_name)
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
-cp_callback =  ModelCheckpoint(checkpoint_path,
-                                 verbose=1,
-                                 save_weights_only=True,
-                                 period=1) #  save weights every 1 epochs
+callbacks = [
+    # Early stopping definition
+    #EarlyStopping(monitor=loss_value, patience=20, verbose=1),
+    # Decrease learning rate by 0.1 factor
+    AdvancedLearnignRateScheduler(monitor=loss_value, patience=10, verbose=1, mode='auto', decayRatio=0.9),
+    # Saving best model
+    ModelCheckpoint(checkpoint_path, monitor=loss_value, save_best_only=True, verbose=1),
+]
 
-batch_size = 128
-epochs = 50
 
-model_train_history = model.fit(x_train_with_channels, y_train_categorical,
-                                batch_size=batch_size,
-                                epochs=epochs,
-                                verbose=1,
-                                validation_data=(x_test_with_channels, y_test_categorical),
-                                callbacks=[cp_callback])
 
+###################################################################
+###  模型训练                                                    ###
+###################################################################
+
+load = False
+batch_size = 100
+epochs = 100
+data_augmentation = False
+pixel_level = True
+
+
+if load:
+    model.load_weights(checkpoint_path)
+
+
+if not data_augmentation:
+    model_train_history = model.fit(x_train_with_channels, y_train_categorical,
+                                    batch_size=batch_size,
+                                    epochs=epochs,
+                                    verbose=1,
+                                    validation_data=(x_test_with_channels, y_test_categorical),
+                                    callbacks=callbacks)
+
+else:
+    print('Using real-time data augmentation.')
+    # This will do preprocessing and realtime data augmentation:
+    datagen = ImageDataGenerator(
+        featurewise_center=False,  # set input mean to 0 over the dataset
+        samplewise_center=False,  # set each sample mean to 0
+        featurewise_std_normalization=False,  # divide inputs by std of the dataset
+        samplewise_std_normalization=False,  # divide each input by its std
+        zca_whitening=False,  # apply ZCA whitening
+        rotation_range=0,  # randomly rotate images in the range (degrees, 0 to 180)
+        width_shift_range=0.1,  # randomly shift images horizontally (fraction of total width)
+        height_shift_range=0.1,  # randomly shift images vertically (fraction of total height)
+        horizontal_flip=True,  # randomly flip images
+        vertical_flip=False,  # randomly flip images
+        preprocessing_function=get_random_eraser(probability = 0.33))
+
+    # Compute quantities required for featurewise normalization
+    # (std, mean, and principal components if ZCA whitening is applied).
+    datagen.fit(x_train_with_channels)
+
+    # Fit the model on the batches generated by datagen.flow().
+    model_train_history = model.fit_generator(datagen.flow(x_train_with_channels, y_train_categorical),
+                                              steps_per_epoch=x_train_with_channels.shape[0] // batch_size,
+                                              validation_data=(x_test_with_channels, y_test_categorical),
+                                              epochs=epochs,
+                                              verbose=1,
+                                              workers=4,
+                                              callbacks=callbacks)
+
+
+
+
+###################################################################
+###  保存训练信息                                                ###
+###################################################################
 
 print(model_train_history.history['acc'])
 print(model_train_history.history['val_acc'])
 print(model_train_history.history['loss'])
 print(model_train_history.history['val_loss'])
+
+
+# Save
+filename = "{}_result.npz".format(model_name)
+save_dict = {
+    "acc": model_train_history.history['acc'],
+    "val_acc": model_train_history.history['val_acc'],
+    "loss": model_train_history.history['loss'],
+    "val_loss":model_train_history.history['val_loss']
+}
+output = os.path.join("./results/", filename)
+np.savez(output, **save_dict)
 
 # Plot training & validation accuracy values
 plt.plot(model_train_history.history['acc'])
@@ -145,7 +203,7 @@ plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
-plt.savefig('./images/cnn_acc.png')
+plt.savefig('./images/{}_acc.png'.format(model_name))
 plt.show()
 
 # Plot training & validation loss values
@@ -156,7 +214,7 @@ plt.ylabel('Loss')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
-plt.savefig('./images/cnn_loss.png')
+plt.savefig('./images/{}_loss.png'.format(model_name))
 plt.show()
 
 
@@ -165,62 +223,9 @@ prediction_classes = np.argmax(prediction_classes, axis=1)
 print(classification_report(y_test, prediction_classes))
 
 
-def plot_confusion_matrix(y_true, y_pred, classes,
-                          normalize=False,
-                          title=None,
-                          cmap=plt.cm.Blues):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
-    if not title:
-        if normalize:
-            title = 'Normalized confusion matrix'
-        else:
-            title = 'Confusion matrix, without normalization'
-
-    # Compute confusion matrix
-    cm = confusion_matrix(y_true, y_pred)
-    # Only use the labels that appear in the data
-    # classes = classes[unique_labels(y_true, y_pred)]
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
-
-    print(cm)
-
-    fig, ax = plt.subplots()
-    im = ax.imshow(cm, interpolation='nearest', cmap=cmap)
-    ax.figure.colorbar(im, ax=ax)
-    # We want to show all ticks...
-    ax.set(xticks=np.arange(cm.shape[1]),
-           yticks=np.arange(cm.shape[0]),
-           # ... and label them with the respective list entries
-           xticklabels=classes, yticklabels=classes,
-           title=title,
-           ylabel='True label',
-           xlabel='Predicted label')
-
-    # Rotate the tick labels and set their alignment.
-    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-             rotation_mode="anchor")
-
-    # Loop over data dimensions and create text annotations.
-    fmt = '.2f' if normalize else 'd'
-    thresh = cm.max() / 2.
-    for i in range(cm.shape[0]):
-        for j in range(cm.shape[1]):
-            ax.text(j, i, format(cm[i, j], fmt),
-                    ha="center", va="center",
-                    color="white" if cm[i, j] > thresh else "black")
-    fig.tight_layout();
-    plt.savefig('./images/cnn_confusion_matrix.png')
-
 
 # return ax
-
+filename = './images/{}_confusion_matrix.png'.format(model_name)
 # Plot confusion matrix
-plot_confusion_matrix(y_test, prediction_classes, classes=classes, normalize=False,
+plot_confusion_matrix(y_test, prediction_classes, classes=classes, filename=filename, normalize=False,
                       title='confusion matrix')

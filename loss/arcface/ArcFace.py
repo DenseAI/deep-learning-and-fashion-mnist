@@ -64,14 +64,17 @@ class ArcFace(Layer):
 
 
 class SphereFace(Layer):
-    def __init__(self, n_classes=10, s=30.0, m=1.35, regularizer=None, **kwargs):
+    def __init__(self, n_classes=10, s=30.0, m=0.50, regularizer=None, w_init=None, easy_margin=False, **kwargs):
         super(SphereFace, self).__init__(**kwargs)
         self.n_classes = n_classes
         self.s = s
         self.m = m
         self.regularizer = regularizers.get(regularizer)
+        self.w_init = w_init
+        self.easy_margin = easy_margin
 
     def build(self, input_shape):
+        print("input_shape: ", input_shape)
         super(SphereFace, self).build(input_shape[0])
         self.W = self.add_weight(name='W',
                                 shape=(input_shape[0][-1], self.n_classes),
@@ -93,7 +96,9 @@ class SphereFace(Layer):
         theta = tf.acos(K.clip(logits, -1.0 + K.epsilon(), 1.0 - K.epsilon()))
         target_logits = tf.cos(self.m * theta)
         #
-        logits = logits * (1 - y) + target_logits * y
+        label_onehot = tf.one_hot(K.cast(y, dtype='int32'), self.n_classes)
+
+        logits = logits * (1 - label_onehot) + target_logits * label_onehot
         # feature re-scale
         logits *= self.s
         out = tf.nn.softmax(logits)
@@ -102,6 +107,48 @@ class SphereFace(Layer):
 
     def compute_output_shape(self, input_shape):
         return (None, self.n_classes)
+
+# class SphereFace(Layer):
+#     def __init__(self, n_classes=10, s=30.0, m=1.35, regularizer=None, **kwargs):
+#         super(SphereFace, self).__init__(**kwargs)
+#         self.n_classes = n_classes
+#         self.s = s
+#         self.m = m
+#         self.regularizer = regularizers.get(regularizer)
+#
+#     def build(self, input_shape):
+#         super(SphereFace, self).build(input_shape[0])
+#         self.W = self.add_weight(name='W',
+#                                 shape=(input_shape[0][-1], self.n_classes),
+#                                 initializer='glorot_uniform',
+#                                 trainable=True,
+#                                 regularizer=self.regularizer)
+#
+#     def call(self, inputs):
+#         x, y = inputs
+#         c = K.shape(x)[-1]
+#         # normalize feature
+#         x = tf.nn.l2_normalize(x, axis=1)
+#         # normalize weights
+#         W = tf.nn.l2_normalize(self.W, axis=0)
+#         # dot product
+#         logits = x @ W
+#         # add margin
+#         # clip logits to prevent zero division when backward
+#         theta = tf.acos(K.clip(logits, -1.0 + K.epsilon(), 1.0 - K.epsilon()))
+#         target_logits = tf.cos(self.m * theta)
+#         #
+#         label_onehot = tf.one_hot(K.cast(y,dtype='int32'), self.n_classes)
+#
+#         logits = logits * (1 - label_onehot) + target_logits * label_onehot
+#         # feature re-scale
+#         logits *= self.s
+#         out = tf.nn.softmax(logits)
+#
+#         return out
+#
+#     def compute_output_shape(self, input_shape):
+#         return (None, self.n_classes)
 
 
 class SphereMargin(Layer):

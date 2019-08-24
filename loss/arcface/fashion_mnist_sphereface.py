@@ -56,7 +56,6 @@ classes = ["Top", "Trouser", "Pullover", "Dress", "Coat",
 
 
 def load_data_from_keras():
-    # get data using tf.keras.datasets. Train and test set is automatically split from datasets
     (x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
     return (x_train, y_train), (x_test, y_test)
 
@@ -64,45 +63,34 @@ def load_data_from_keras():
 (x_train, y_train), (x_test, y_test) = load_data_from_keras()
 
 
-
-#x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.1, random_state=0)
-
 if K.image_data_format() == 'channels_first':
     x_train_with_channels = x_train.reshape(x_train.shape[0], 1, img_rows, img_cols)
-    #x_val_with_channels = x_val.reshape(x_val.shape[0], 1, img_rows, img_cols)
     x_test_with_channels = x_test.reshape(x_test.shape[0], 1, img_rows, img_cols)
     input_shape = (1, img_rows, img_cols)
 else:
     x_train_with_channels = x_train.reshape(x_train.shape[0], img_rows, img_cols, 1)
-    #x_val_with_channels = x_val.reshape(x_val.shape[0], img_rows, img_cols, 1)
     x_test_with_channels = x_test.reshape(x_test.shape[0], img_rows, img_cols, 1)
     input_shape = (img_rows, img_cols, 1)
+
 print("train feature shape = ", x_train_with_channels.shape)
-#print("validation feature shape = ", x_val_with_channels.shape)
 print("test feature shape = ", x_test_with_channels.shape)
 
 
 x_train_with_channels = x_train_with_channels.astype("float32") / 255.0
-#x_val_with_channels = x_val_with_channels.astype("float32") / 255.0
 x_test_with_channels = x_test_with_channels.astype("float32") / 255.0
 
 y_train_categorical = keras.utils.to_categorical(y_train, num_classes)
-#y_val_categorical = keras.utils.to_categorical(y_val, num_classes)
 y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
-
 loss_name = "sphereface"
-m = 1.5
-
-s = 30.0
-
+m=2
 
 def create_model():
     learn_rate = 1
 
     # Encoder
     input_img = Input(shape=(28, 28, 1))
-    input_label = Input(shape=(10,))
+    input_label = Input(shape=(1,))
     x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(input_img)
     x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(x)
     x = MaxPooling2D(pool_size=(2, 2))(x)
@@ -120,10 +108,10 @@ def create_model():
 
 
     output = SphereFace(10, m=m, regularizer=regularizers.l2(weight_decay))([x, input_label])
-    model = Model([input_img,input_label], output)
+    model = Model([input_img, input_label], output)
 
     model.compile(loss=keras.losses.categorical_crossentropy,
-                  optimizer=keras.optimizers.Adadelta(lr=learn_rate),
+                  optimizer=keras.optimizers.adam,
                   metrics=['accuracy'])
     return model
 
@@ -140,52 +128,15 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
                                  save_weights_only=True,
                                  period=1) #  save weights every 1 epochs
 
-
-
-# n_to_show = 10000
-# example_idx = np.random.choice(range(len(x_train_with_channels)), n_to_show)
-# example_images = x_train_with_channels[example_idx]
-# example_labels = y_train[example_idx]
-#
-#
-# x_train_append = []
-# y_train_append = []
-# y_train_random_append = []
-# num_classes = 10
-# for ii in range(example_images.shape[0]):
-#     x = example_images[ii]
-#     y = example_labels[ii]
-#     #x_train_append(x)
-#     for jj in range(num_classes):
-#         x_train_append.append(x)
-#         y_train_append.append(y)
-#         y_train_random_append.append(jj)
-#
-# x_train_append = np.array(x_train_append)
-# y_train_append = np.array(y_train_append)
-# y_train_random_append = np.array(y_train_random_append)
-
-
-# y_train_append_categorical = keras.utils.to_categorical(y_train_append, num_classes)
-# #y_val_categorical = keras.utils.to_categorical(y_val, num_classes)
-# y_train_random_append_categorical = keras.utils.to_categorical(y_train_random_append, num_classes)
-
-# y_test_rnd = []
-# for ii in range(len(y_test)):
-#     label = random.randrange(0, 10)
-#     y_test_rnd.append(label)
-#
-# y_test_rnd = np.array(y_test_rnd)
-
 batch_size = 128
-epochs = 10
+epochs = 50
 y_train = y_train.astype("int32")
 y_test = y_test.astype("int32")
-model_train_history = model.fit([x_train_with_channels, y_train_categorical], y_train_categorical,
+model_train_history = model.fit([x_train_with_channels, y_train], y_train_categorical,
                                 batch_size=batch_size,
                                 epochs=epochs,
                                 verbose=1,
-                                validation_data=([x_test_with_channels, y_test_categorical], y_test_categorical),
+                                validation_data=([x_test_with_channels,y_test], y_test_categorical),
                                 callbacks=[cp_callback])
 
 
@@ -203,7 +154,7 @@ plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
 plt.savefig('./images/{}_acc_{}.png'.format(loss_name, m))
-#plt.show()
+plt.show()
 
 # Plot training & validation loss values
 plt.plot(model_train_history.history['loss'])
@@ -214,10 +165,10 @@ plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.grid(True)
 plt.savefig('./images/{}_loss_{}.png'.format(loss_name, m))
-#plt.show()
+plt.show()
 
 
-prediction_classes = model.predict([x_test_with_channels,y_train_categorical])
+prediction_classes = model.predict([x_test_with_channels,y_test])
 prediction_classes = np.argmax(prediction_classes, axis=1)
 print(classification_report(y_test, prediction_classes))
 
@@ -281,3 +232,6 @@ def plot_confusion_matrix(y_true, y_pred, classes,
 # Plot confusion matrix
 plot_confusion_matrix(y_test, prediction_classes, classes=classes, normalize=False,
                       title='confusion matrix')
+
+
+

@@ -216,6 +216,8 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
 batch_size = 128
 epochs = 200
 
+
+
 model_train_history = model.fit(x_train_with_channels, y_train_categorical,
 								batch_size=batch_size,
 								epochs=epochs,

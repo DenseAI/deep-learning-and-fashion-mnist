@@ -163,7 +163,7 @@ Loss如下：
 ## 参考
 - [zalandoresearch](https://github.com/zalandoresearch/fashion-mnist)
 - [Fashion MNIST 94% Accuracy using CNN Keras](https://www.kaggle.com/albertbrucelee/fashion-mnist-94-accuracy-using-cnn-keras)
-- [@苏剑林](http://kexue.fm/archives/4556/)
+- [fashion mnist的一个baseline (MobileNet 95%)](http://kexue.fm/archives/4556/)
 - [zhunzhong07/Random-Erasing ](https://github.com/zhunzhong07/Random-Erasing)
 - [yungshun317/keras-cifar-10-wide-resnet ](https://github.com/yungshun317/keras-cifar-10-wide-resnet)
 - [sverneka/wide-resnet-cifar100-kaggle](https://github.com/sverneka/wide-resnet-cifar100-kaggle)

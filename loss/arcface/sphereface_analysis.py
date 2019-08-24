@@ -118,7 +118,7 @@ x_test_append = np.array(x_test_append)
 y_test_append = np.array(y_test_append)
 y_test_rnd_append = np.array(y_test_rnd_append)
 
-prediction_classes = model.predict([x_test_append, y_test_rnd_append])
+prediction_classes = model.predict([x_test, y_test])
 
 print(prediction_classes[0:10])
 

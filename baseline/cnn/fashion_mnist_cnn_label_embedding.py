@@ -18,6 +18,9 @@ import numpy as np
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 
+from keras.preprocessing.image import ImageDataGenerator
+import math
+
 # Seed value
 # Apparently you may use different seed values at each stage
 seed_value= 0
@@ -160,15 +163,126 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
                                  period=1) #  save weights every 1 epochs
 
 batch_size = 128
-epochs = 50
+epochs = 100
 
-model_train_history = model.fit([x_train_append, y_train_random_append], y_train_append_categorical,
-                                batch_size=batch_size,
-                                epochs=epochs,
-                                verbose=1,
-                                validation_data=([x_test_with_channels, y_test_rnd], y_test_categorical),
-                                callbacks=[cp_callback])
 
+load = True
+if load:
+	model.load_weights(checkpoint_path)
+
+
+def get_random_eraser(img, probability = 0.5, sl = 0.02, sh = 0.4, r1 = 0.3, mean=[0.4914, 0.4822, 0.4465]):
+    #def eraser(img):
+    if random.uniform(0, 1) > probability:
+        return img
+
+    img_h, img_w, img_c = img.shape
+    for attempt in range(100):
+        area = img_h * img_w
+
+        target_area = random.uniform(sl, sh) * area
+        aspect_ratio = random.uniform(r1, 1 / r1)
+
+        h = int(round(math.sqrt(target_area * aspect_ratio)))
+        w = int(round(math.sqrt(target_area / aspect_ratio)))
+
+        if w < img_w and h < img_h:
+            x1 = random.randint(0, img_h - h)
+            y1 = random.randint(0, img_w - w)
+            if img_c == 3:
+                img[0, x1:x1 + h, y1:y1 + w] = mean[0]
+                img[1, x1:x1 + h, y1:y1 + w] = mean[1]
+                img[2, x1:x1 + h, y1:y1 + w] = mean[2]
+            else:
+                img[0, x1:x1 + h, y1:y1 + w] = mean[0]
+            return img
+
+    return img
+    #return eraser
+
+
+class DataGenerator(keras.utils.Sequence):
+    'Generates data for Keras'
+    def __init__(self, data, labels, batch_size=128, dim=(28,28), n_channels=1,
+                 n_classes=10, shuffle=True, probability=0.5):
+        'Initialization'
+        self.dim = dim
+        self.batch_size = batch_size
+        self.labels = labels
+        self.data = data
+        self.n_channels = n_channels
+        self.n_classes = n_classes
+        self.shuffle = shuffle
+        self.probability = probability
+        self.on_epoch_end()
+
+    def __len__(self):
+        'Denotes the number of batches per epoch'
+        return int(np.floor(len(self.data) / self.batch_size))
+
+    def __getitem__(self, index):
+        'Generate one batch of data'
+        # Generate indexes of the batch
+        indexes = self.indexes[index*self.batch_size:(index+1)*self.batch_size]
+
+        # Generate data
+        X, y = self.__data_generation(indexes)
+
+        return X, y
+
+    def on_epoch_end(self):
+        'Updates indexes after each epoch'
+        self.indexes = np.arange(len(self.data))
+        if self.shuffle == True:
+            np.random.shuffle(self.indexes)
+
+    def __data_generation(self, list_IDs_temp):
+        'Generates data containing batch_size samples' # X : (n_samples, *dim, n_channels)
+        # Initialization
+        X = np.empty((self.batch_size * 2, *self.dim, self.n_channels))
+        y = np.empty((self.batch_size * 2), dtype=int)
+        y_rnd = np.empty((self.batch_size * 2), dtype=int)
+
+        # Generate data
+        for i, ID in enumerate(list_IDs_temp):
+            # Store sample
+            X[i,] = get_random_eraser(self.data[ID], probability=self.probability)
+            X[i+1,] = get_random_eraser(self.data[ID], probability=self.probability)
+            # Store class
+            y[i] = self.labels[ID]
+            y[i+1] = self.labels[ID]
+            y_rnd[i] = self.labels[ID]
+            y_rnd[i + 1] = random.randrange(0, num_classes)
+            # if random.uniform(0, 1) > self.probability:
+            #     y_rnd[i+1] = random.randrange(0, num_classes)
+            # else:
+            #     y_rnd[i] = self.labels[ID]
+        return [X, y_rnd], keras.utils.to_categorical(y, num_classes=self.n_classes)
+
+# # Generators
+training_generator = DataGenerator(x_train_with_channels, y_train, batch_size=batch_size)
+validation_generator = DataGenerator(x_test_with_channels, y_test,batch_size=batch_size, probability=0.0)
+
+
+
+data_augmentation = True
+if not data_augmentation:
+    model_train_history = model.fit([x_train_with_channels,y_train], y_train_categorical,
+                                    batch_size=batch_size,
+                                    epochs=epochs,
+                                    verbose=1,
+                                    validation_data=([x_test_with_channels, y_test_rnd], y_test_categorical),
+                                    callbacks=[cp_callback])
+
+else:
+    # Fit the model on the batches generated by datagen.flow().
+    model_train_history = model.fit_generator(generator=training_generator,
+                                              steps_per_epoch=x_train_with_channels.shape[0] // batch_size,
+                                              validation_data=validation_generator,
+                                              epochs=epochs,
+                                              verbose=1,
+                                              workers=4,
+                                              callbacks=[cp_callback])
 
 print(model_train_history.history['acc'])
 print(model_train_history.history['val_acc'])
@@ -198,7 +312,7 @@ plt.savefig('./images/cnn_label_loss.png')
 plt.show()
 
 
-prediction_classes = model.predict([x_test_with_channels,y_test])
+prediction_classes = model.predict([x_test_with_channels, y_test_rnd])
 prediction_classes = np.argmax(prediction_classes, axis=1)
 print(classification_report(y_test, prediction_classes))
 
