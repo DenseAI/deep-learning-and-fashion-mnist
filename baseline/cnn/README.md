@@ -53,9 +53,17 @@ Loss如下：
   <img width="900" src="/baseline/cnn/images/all_optimizers_cnn_loss.png" "optimizer_acc">
 </p>
 
-从结果来看，上述的各种优化算法除了SGD差别不大，Adamax稍微好一点，准确率能够达到0.94以上。SGD通常训练时间更长，但是在好的初始化和学习率调度方案的情况下，结果更可靠。
+从结果来看，上述的各种优化算法除了SGD差别不大，Adamax稍微好一点，准确率能够达到0.94以上。
+[经验总结](https://zhuanlan.zhihu.com/p/22252270)：
+- 尽量使用学习率可自适应的优化方法，采用默认值 
+- SGD通常训练时间更长，但是在好的初始化和学习率调度方案的情况下，结果更可靠  
+- Adadelta，RMSprop，Adam、Adamax、Nadam是比较相近的算法，在相似的情况下表现差不多。 
+- 在想使用带动量的RMSprop，或者Adam的地方，大多可以使用Nadam取得更好的效果
 
 ## 3 激活函数与参数初始化
+
+
+## 4 卷积核大小
 
 
 ## 参考
@@ -65,6 +73,8 @@ Loss如下：
 - [RMSProp算法](http://zh.d2l.ai/chapter_optimization/rmsprop.html)
 - [AdaDelta算法](http://zh.d2l.ai/chapter_optimization/adadelta.html)
 - [Adam算法](http://zh.d2l.ai/chapter_optimization/adam.html)
+- [深度学习最全优化方法总结比较（SGD，Adagrad，Adadelta，Adam，Adamax，Nadam）](https://zhuanlan.zhihu.com/p/22252270)
+
 ## 论文
 - [1] Zeiler, M. D. (2012). ADADELTA: An Adaptive Learning Rate Method. Retrieved from [http://arxiv.org/abs/1212.5701](http://arxiv.org/abs/1212.5701) 
 - [2] Kingma, D. P., & Ba, J. L. (2015). Adam: a Method for Stochastic Optimization. International Conference on Learning Representations, 1–13.
