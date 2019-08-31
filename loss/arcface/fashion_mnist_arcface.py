@@ -97,7 +97,7 @@ def create_model():
 
     # Encoder
     input_img = Input(shape=(28, 28, 1))
-    input_label = Input(shape=(10,))
+    input_label = Input(shape=(1,))
     x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(input_img)
     x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(x)
     x = MaxPooling2D(pool_size=(2, 2))(x)
@@ -136,14 +136,14 @@ cp_callback =  ModelCheckpoint(checkpoint_path,
                                  period=1) #  save weights every 1 epochs
 
 batch_size = 128
-epochs = 5
+epochs = 50
 y_train = y_train.astype("int32")
 y_test = y_test.astype("int32")
-model_train_history = model.fit([x_train_with_channels,y_train_categorical], y_train_categorical,
+model_train_history = model.fit([x_train_with_channels,y_train], y_train_categorical,
                                 batch_size=batch_size,
                                 epochs=epochs,
-                                verbose=1,
-                                validation_data=([x_test_with_channels,y_test_categorical], y_test_categorical),
+                                verbose=2,
+                                validation_data=([x_test_with_channels,y_test], y_test_categorical),
                                 callbacks=[cp_callback])
 
 
@@ -175,7 +175,7 @@ plt.savefig('./images/{}_loss_{}.png'.format(loss_name, m))
 plt.show()
 
 
-prediction_classes = model.predict([x_test_with_channels,y_test_categorical])
+prediction_classes = model.predict([x_test_with_channels,y_test])
 prediction_classes = np.argmax(prediction_classes, axis=1)
 print(classification_report(y_test, prediction_classes))
 

@@ -46,6 +46,21 @@ def load_model(model_class, folder):
 def load_mnist():
     (x_train, y_train), (x_test, y_test) =  fashion_mnist.load_data() #mnist.load_data()
 
+    # x_train_zero = np.zeros((6000, 28, 28), dtype="float32")
+    # y_train_zero = np.zeros((6000), dtype="float32")
+    #
+    # x_test_zero = np.zeros((1000, 28, 28), dtype="float32")
+    # y_test_zero = np.zeros((1000), dtype="float32")
+    #
+    # y_train = y_train + 1
+    # y_test = y_test + 1
+    #
+    # x_train = np.vstack([x_train, x_train_zero])
+    # x_test = np.vstack([x_test, x_test_zero])
+    # y_train = np.hstack([y_train, y_train_zero])
+    # y_test = np.hstack([y_test, y_test_zero])
+
+
     x_train = x_train.astype('float32') / 255.
     x_train = x_train.reshape(x_train.shape + (1,))
     x_test = x_test.astype('float32') / 255.
@@ -63,7 +78,7 @@ RUN_FOLDER = './'
 
 (x_train, y_train), (x_test, y_test) = load_mnist()
 
-
+num_classes = 10
 m = 2
 
 def create_model():
@@ -84,12 +99,12 @@ def create_model():
 
     x = Flatten()(x)
     x = Dense(128, activation='relu')(x)
-    x = BatchNormalization()(x)
-    x = Dropout(0.5)(x)
+    #x = BatchNormalization()(x)
+    #x = Dropout(0.5)(x)
 
 
-    output = SphereFace(10, m=m)([x, input_label])
-    model = Model([input_img,input_label], output)
+    output = x  #SphereFace(num_classes, m=m)([x, input_label])
+    model = Model(input_img, output)
 
     model.compile(loss=keras.losses.categorical_crossentropy,
                   optimizer=keras.optimizers.Adadelta(lr=learn_rate),
@@ -108,8 +123,8 @@ x_test_append = []
 y_test_append = []
 y_test_rnd_append = []
 for ii in range(len(y_test)):
-    for jj in range(10):
-        label = random.randrange(0, 10)
+    for jj in range(num_classes):
+        label = random.randrange(0, num_classes)
         x_test_append.append(x_test[ii])
         y_test_append.append(y_test[ii])
         y_test_rnd_append.append(jj)
@@ -118,18 +133,18 @@ x_test_append = np.array(x_test_append)
 y_test_append = np.array(y_test_append)
 y_test_rnd_append = np.array(y_test_rnd_append)
 
-prediction_classes = model.predict([x_test, y_test])
+prediction_classes = model.predict([x_test_append, y_test_rnd_append])
 
-print(prediction_classes[0:10])
+print(prediction_classes[0:num_classes])
 
 
 y_preds = []
-preds = np.zeros(10)
+preds = np.zeros(num_classes)
 for ii in range(len(prediction_classes)):
     preds = preds + prediction_classes[ii]
-    if(ii > 0 and ii % 10 == 0):
+    if(ii > 0 and ii % num_classes == 0):
         y_preds.append(preds)
-        preds = np.zeros(10)
+        preds = np.zeros(num_classes)
     elif(ii == (len(prediction_classes) - 1)):
         y_preds.append(preds)
 
@@ -137,8 +152,33 @@ y_preds = np.array(y_preds)
 #print(y_test[0])
 print(y_preds.shape)
 
+y_preds_raw = y_preds
+
 y_preds = np.argmax(y_preds, axis=1)
 print(classification_report(y_test, y_preds))
+
+
+for ii in range(len(y_test)):
+    if(y_test[ii] != y_preds[ii] and y_test[ii] == 0):
+        print(y_test[ii], " ", y_preds[ii])
+        print(y_preds_raw[ii])
+        print(prediction_classes[ii * 10])
+        print(prediction_classes[ii * 10+1])
+        print(prediction_classes[ii * 10+2])
+        print(prediction_classes[ii * 10+3])
+        print(prediction_classes[ii * 10+4])
+        print(prediction_classes[ii * 10+5])
+        print(prediction_classes[ii * 10+6])
+        print(prediction_classes[ii * 10+7])
+        print(prediction_classes[ii * 10+8])
+        print(prediction_classes[ii * 10+9])
+
+    # if(y_preds_raw[ii][0] > 1):
+    #     print(y_test[ii], " ", y_preds[ii])
+    #     print(y_preds_raw[ii])
+
+
+
 
 def plot_confusion_matrix(y_true, y_pred, classes,
                           normalize=False,
@@ -198,14 +238,13 @@ def plot_confusion_matrix(y_true, y_pred, classes,
 
 # y_preds = np.array(y_preds)
 #
-# classes = ["Top", "Trouser", "Pullover", "Dress", "Coat",
-#            "Sandal", "Shirt", "Sneaker", "Bag", "Ankle Boot"]
-#
-# print(example_labels)
-# print(y_preds)
-# # Plot confusion matrix
-# plot_confusion_matrix(example_labels, y_preds, classes=classes, normalize=False,
-#                       title='confusion matrix')
+classes = ["Zero","Top", "Trouser", "Pullover", "Dress", "Coat",
+           "Sandal", "Shirt", "Sneaker", "Bag", "Ankle Boot"]
+
+print(y_preds)
+# Plot confusion matrix
+plot_confusion_matrix(y_test, y_preds, classes=classes, normalize=False,
+                      title='confusion matrix')
 #
 #
 #

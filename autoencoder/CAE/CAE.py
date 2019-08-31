@@ -1,7 +1,7 @@
 
 # -*- coding:utf-8 -*-
 
-from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, BatchNormalization, LeakyReLU, Dropout, Embedding, multiply
+from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, BatchNormalization, LeakyReLU, Dropout, Embedding, multiply, subtract
 from keras.models import Model
 from keras import backend as K
 from keras.optimizers import Adam
@@ -130,7 +130,7 @@ class Autoencoder():
         label = Input(shape=(1,), dtype='int32')
         label_embedding = Flatten()(Embedding(self.num_classes, self.z_dim)(label))
 
-        encoder_output = multiply([encoder_output, label_embedding])
+        encoder_output = subtract([encoder_output, label_embedding])
 
         self.encoder = Model([encoder_input, label], encoder_output)
 
@@ -167,7 +167,7 @@ class Autoencoder():
         label_output = Flatten()(x)
         label_output = Dense(self.num_classes, activation="softmax")(label_output)
 
-        self.decoder = Model(decoder_input, [decoder_output, label_output])
+        self.decoder = Model(decoder_input, decoder_output)
 
         self.decoder.summary()
 
@@ -187,7 +187,7 @@ class Autoencoder():
         def r_loss(y_true, y_pred):
             return K.mean(K.square(y_true - y_pred), axis=[1, 2, 3])
 
-        self.model.compile(optimizer=optimizer, loss=[r_loss, 'sparse_categorical_crossentropy'], metrics=['accuracy'])
+        self.model.compile(optimizer=optimizer, loss=[r_loss], metrics=['accuracy'])
 
     def save(self, folder):
 
@@ -228,12 +228,12 @@ class Autoencoder():
 
         history = self.model.fit(
             [x_train_rnd, y_train_rnd],
-            [x_train, y_train],
+            x_train,
             batch_size=batch_size,
             shuffle=True,
             epochs=epochs,
             initial_epoch=initial_epoch,
-            validation_data=([x_test, y_test], [x_test, y_test]),
+            validation_data=([x_test, y_test], x_test),
             callbacks=callbacks_list
         )
         return history

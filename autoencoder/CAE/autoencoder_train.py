@@ -72,6 +72,27 @@ print(x_train_append.shape)
 print(y_train_append.shape)
 print(y_train_random_append.shape)
 
+x_test_append = []
+y_test_append = []
+y_test_random_append = []
+num_classes = 10
+for ii in range(x_test.shape[0]):
+    x = x_test[ii]
+    y = y_test[ii]
+    #x_test_append(x)
+    for jj in range(num_classes):
+        x_test_append.append(x)
+        y_test_append.append(y)
+        y_test_random_append.append(jj)
+
+x_test_append = np.array(x_test_append)
+y_test_append = np.array(y_test_append)
+y_test_random_append = np.array(y_test_random_append)
+
+print(x_test_append.shape)
+print(y_test_append.shape)
+print(y_test_random_append.shape)
+
 
 AE.encoder.summary()
 AE.decoder.summary()
@@ -83,8 +104,16 @@ EPOCHS = 20
 
 AE.compile(LEARNING_RATE)
 
-model_train_history = AE.train(x_train_append, y_train_append,
-                               x_train_append, y_train_random_append,
+
+print(np.vstack([x_train_append, x_test_append]).shape)
+
+print("y_train_append: ", y_train_append.shape)
+print("y_test_append: ", y_test_append.shape)
+# print(np.vstack([y_train_append, y_test_append]).shape)
+# print(np.vstack([y_train_random_append,y_test_random_append]).shape)
+
+model_train_history = AE.train(np.vstack([x_train_append, x_test_append]), np.hstack([y_train_append,y_test_append]),
+                               np.vstack([x_train_append, x_test_append]), np.hstack([y_train_random_append,y_test_random_append]),
                                x_test, y_test,
                                batch_size = BATCH_SIZE,
                                epochs = EPOCHS,

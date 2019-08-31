@@ -7,7 +7,7 @@ import tensorflow as tf
 import math
 
 class ArcFace(Layer):
-    def __init__(self, n_classes=10, s=30.0, m=0.50, regularizer=None, w_init=None, easy_margin=False, **kwargs):
+    def __init__(self, n_classes=10, s=30.0, m=0.50, regularizer=None, w_init=None, easy_margin=True, **kwargs):
         super(ArcFace, self).__init__(**kwargs)
         self.n_classes = n_classes
         self.s = s
@@ -51,7 +51,8 @@ class ArcFace(Layer):
         else:
             phi = tf.where(cosine > th, phi, cosine - mm)
 
-        output = (labels * phi) + ((1.0 - labels) * cosine)
+        label_onehot = tf.one_hot(K.cast(labels, dtype='int32'), self.n_classes)
+        output = (label_onehot * phi) + ((1.0 - label_onehot) * cosine)
         output *= self.s
 
         output = tf.nn.softmax(output)
@@ -95,10 +96,13 @@ class SphereFace(Layer):
         # clip logits to prevent zero division when backward
         theta = tf.acos(K.clip(logits, -1.0 + K.epsilon(), 1.0 - K.epsilon()))
         target_logits = tf.cos(self.m * theta)
+
         #
         label_onehot = tf.one_hot(K.cast(y, dtype='int32'), self.n_classes)
+        logits = logits * (1 - label_onehot) + target_logits * (label_onehot)
 
-        logits = logits * (1 - label_onehot) + target_logits * label_onehot
+        #label_onehot = y #tf.one_hot(K.cast(y, dtype='int32'), self.n_classes)
+        #logits = logits * (1.1 - label_onehot * 1) + target_logits * (label_onehot * 1 + 0.1)
         # feature re-scale
         logits *= self.s
         out = tf.nn.softmax(logits)

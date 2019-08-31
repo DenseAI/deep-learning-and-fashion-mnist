@@ -2,7 +2,7 @@
 import keras
 import tensorflow as tf
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Input, InputSpec
+from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Input, InputSpec, Add, Subtract, Dot
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
 from keras.callbacks import ModelCheckpoint
@@ -11,10 +11,227 @@ from keras import regularizers
 from keras import initializers, constraints, activations
 
 from keras.layers import Layer
-
+import numpy as np
 
 
 class ModifiedSoftmaxLayer(Layer):
+    """Just your regular densely-connected NN layer.
+
+    `Dense` implements the operation:
+    `output = activation(dot(input, kernel) + bias)`
+    where `activation` is the element-wise activation function
+    passed as the `activation` argument, `kernel` is a weights matrix
+    created by the layer, and `bias` is a bias vector created by the layer
+    (only applicable if `use_bias` is `True`).
+
+    Note: if the input to the layer has a rank greater than 2, then
+    it is flattened prior to the initial dot product with `kernel`.
+
+    # Example
+
+    ```python
+        # as first layer in a sequential model:
+        model = Sequential()
+        model.add(Dense(32, input_shape=(16,)))
+        # now the model will take as input arrays of shape (*, 16)
+        # and output arrays of shape (*, 32)
+
+        # after the first layer, you don't need to specify
+        # the size of the input anymore:
+        model.add(Dense(32))
+    ```
+
+    # Arguments
+        units: Positive integer, dimensionality of the output space.
+        activation: Activation function to use
+            (see [activations](../activations.md)).
+            If you don't specify anything, no activation is applied
+            (ie. "linear" activation: `a(x) = x`).
+        use_bias: Boolean, whether the layer uses a bias vector.
+        kernel_initializer: Initializer for the `kernel` weights matrix
+            (see [initializers](../initializers.md)).
+        bias_initializer: Initializer for the bias vector
+            (see [initializers](../initializers.md)).
+        kernel_regularizer: Regularizer function applied to
+            the `kernel` weights matrix
+            (see [regularizer](../regularizers.md)).
+        bias_regularizer: Regularizer function applied to the bias vector
+            (see [regularizer](../regularizers.md)).
+        activity_regularizer: Regularizer function applied to
+            the output of the layer (its "activation").
+            (see [regularizer](../regularizers.md)).
+        kernel_constraint: Constraint function applied to
+            the `kernel` weights matrix
+            (see [constraints](../constraints.md)).
+        bias_constraint: Constraint function applied to the bias vector
+            (see [constraints](../constraints.md)).
+
+    # Input shape
+        nD tensor with shape: `(batch_size, ..., input_dim)`.
+        The most common situation would be
+        a 2D input with shape `(batch_size, input_dim)`.
+
+    # Output shape
+        nD tensor with shape: `(batch_size, ..., units)`.
+        For instance, for a 2D input with shape `(batch_size, input_dim)`,
+        the output would have shape `(batch_size, units)`.
+    """
+
+    #@interfaces.legacy_dense_support
+    def __init__(self, units,
+                 batch_size = 128,
+                 activation=None,
+                 use_bias=True,
+                 kernel_initializer='glorot_uniform',
+                 bias_initializer='zeros',
+                 kernel_regularizer=None,
+                 bias_regularizer=None,
+                 activity_regularizer=None,
+                 kernel_constraint=None,
+                 bias_constraint=None,
+                 **kwargs):
+        if 'input_shape' not in kwargs and 'input_dim' in kwargs:
+            kwargs['input_shape'] = (kwargs.pop('input_dim'),)
+        super(ModifiedSoftmaxLayer, self).__init__(**kwargs)
+        self.units = units
+        self.activation = activations.get(activation)
+        self.batch_size = batch_size
+        self.use_bias = use_bias
+        self.kernel_initializer = initializers.get(kernel_initializer)
+        self.bias_initializer = initializers.get(bias_initializer)
+        self.kernel_regularizer = regularizers.get(kernel_regularizer)
+        self.bias_regularizer = regularizers.get(bias_regularizer)
+        self.activity_regularizer = regularizers.get(activity_regularizer)
+        self.kernel_constraint = constraints.get(kernel_constraint)
+        self.bias_constraint = constraints.get(bias_constraint)
+        self.input_spec = InputSpec(min_ndim=2)
+        self.supports_masking = True
+
+    def build(self, input_shape):
+        assert len(input_shape) >= 2
+        input_dim = input_shape[-1]
+        #self.batch_size = input_shape[-1]
+        input_features = input_shape[1]
+        self.feature_size = input_shape[1]
+
+        print("input_shape: " , input_shape)
+
+        self.kernel = self.add_weight(shape=(input_dim, self.units),
+                                      initializer=self.kernel_initializer,
+                                      name='kernel',
+                                      regularizer=self.kernel_regularizer,
+                                      constraint=self.kernel_constraint)
+
+        self.factormachine = self.add_weight(shape=(self.batch_size, self.units, input_features),
+                                      initializer=self.kernel_initializer,
+                                      name='kernel',
+                                      regularizer=self.kernel_regularizer,
+                                      constraint=self.kernel_constraint)
+
+        if self.use_bias:
+            self.bias = self.add_weight(shape=(self.units,),
+                                        initializer=self.bias_initializer,
+                                        name='bias',
+                                        regularizer=self.bias_regularizer,
+                                        constraint=self.bias_constraint)
+        else:
+            self.bias = None
+        self.input_spec = InputSpec(min_ndim=2, axes={-1: input_dim})
+        self.built = True
+
+    def call(self, inputs):
+        x = inputs
+        W = self.kernel
+
+        #print("x:", x.shape)
+        #print("W:", W.shape)
+
+        weights_norm = tf.norm(W, axis=0, keepdims=True)
+        weights = tf.div(W, weights_norm, name="normalize_weights")
+        logits = tf.matmul(x, weights)
+
+        #print("self.factormachine:", self.factormachine.shape)
+        #Factor machine
+        #factors = K.dot(self.factormachine, x )
+        #print("self.batch_size: ", self.batch_size)
+        #print("self.feature_size: ", self.feature_size)
+
+        K.batch_dot()
+        features = []
+        for ii in range(self.batch_size):
+            xi = x[ii]
+            wi = self.factormachine[ii]
+
+            feature = tf.multiply(wi, xi)
+            feature = K.transpose(feature)
+
+            #print("feature: ", feature.shape)
+            features.append(feature)
+
+        feature_machine = []
+        for ii in range(self.batch_size):
+            #sum_a_keepdims = K.sum(a , axis=-1 , keepdims=True)
+            #K.sum()
+            sum = K.sum(features[ii], axis=0, keepdims=False)
+
+            #print("sum: ", sum)
+
+            diffs = []
+            #print("K.shape(features[ii]): ", K.shape(features[ii]))
+            for jj in range(self.feature_size):
+                diff = tf.subtract(sum, features[ii][jj]) #Subtract()([sum, x]) for x in features[ii]]
+                diffs.append(diff)
+
+            #print("diffs: ", diffs)
+            dots = []
+            for jj in range(self.feature_size):
+                #dots = [Dot(axes=1)([d, x]) for d, x in zip(diffs, features[ii])]
+                dot = tf.multiply(diffs[jj], features[ii][jj])  #K.dot(diffs[jj], features[ii][jj])
+                dots.append(dot)
+
+            sum = K.sum(dots, axis=0, keepdims=False)
+            feature_machine.append(sum)
+            # print("dots: ", dots)
+            # print("dots: ", dots[0].shape)
+
+        if self.use_bias:
+            output = K.bias_add(logits, self.bias, data_format='channels_last')
+
+        output = output + feature_machine
+
+        if self.activation is not None:
+            output = self.activation(output)
+        return output
+
+    def compute_output_shape(self, input_shape):
+        assert input_shape and len(input_shape) >= 2
+        assert input_shape[-1]
+        output_shape = list(input_shape)
+        output_shape[-1] = self.units
+        return tuple(output_shape)
+
+    def get_config(self):
+        config = {
+            'units': self.units,
+            'activation': activations.serialize(self.activation),
+            'use_bias': self.use_bias,
+            'kernel_initializer': initializers.serialize(self.kernel_initializer),
+            'bias_initializer': initializers.serialize(self.bias_initializer),
+            'kernel_regularizer': regularizers.serialize(self.kernel_regularizer),
+            'bias_regularizer': regularizers.serialize(self.bias_regularizer),
+            'activity_regularizer':
+                regularizers.serialize(self.activity_regularizer),
+            'kernel_constraint': constraints.serialize(self.kernel_constraint),
+            'bias_constraint': constraints.serialize(self.bias_constraint)
+        }
+        base_config = super(ModifiedSoftmaxLayer, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+
+
+
+
+class ErrorLearning(Layer):
     """Just your regular densely-connected NN layer.
 
     `Dense` implements the operation:

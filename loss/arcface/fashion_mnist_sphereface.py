@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import keras
 import tensorflow as tf
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Input
+from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Input, add
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
 from keras.callbacks import ModelCheckpoint
@@ -25,6 +25,9 @@ from ArcFace import ArcFace, SphereFace, CosFace
 
 weight_decay = 1e-4
 
+###################################################################
+###  配置 Tensorflow                                            ###
+###################################################################
 # Seed value
 # Apparently you may use different seed values at each stage
 seed_value= 0
@@ -46,6 +49,10 @@ session_conf = tf.ConfigProto(intra_op_parallelism_threads=1, inter_op_paralleli
 sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
 K.set_session(sess)
 
+
+###################################################################
+###  读取训练、测试数据                                           ###
+###################################################################
 num_classes = 10
 
 # image dimensions
@@ -57,6 +64,22 @@ classes = ["Top", "Trouser", "Pullover", "Dress", "Coat",
 
 def load_data_from_keras():
     (x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
+    # x_train_zero = np.zeros((6000*2, 28,28), dtype="float32")
+    # y_train_zero = np.zeros((6000), dtype="float32")
+    # y_train_one = np.ones((6000), dtype="float32")
+    #
+    # x_test_zero = np.zeros((1000*2, 28, 28), dtype="float32")
+    # y_test_zero = np.zeros((1000), dtype="float32")
+    # y_test_one = np.ones((1000), dtype="float32")
+    #
+    # y_train = y_train + 2
+    # y_test = y_test + 2
+
+    # x_train = np.vstack([x_train, x_train_zero])
+    # x_test = np.vstack([x_test, x_test_zero])
+    # y_train = np.hstack([y_train, y_train_zero, y_train_one])
+    # y_test = np.hstack([y_test, y_test_zero, y_test_one])
+
     return (x_train, y_train), (x_test, y_test)
 
 
@@ -82,62 +105,98 @@ x_test_with_channels = x_test_with_channels.astype("float32") / 255.0
 y_train_categorical = keras.utils.to_categorical(y_train, num_classes)
 y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 
+
+y_test_rnd = []
+for ii in range(len(y_test)):
+    label = random.randrange(0, num_classes)
+    y_test_rnd.append(label)
+y_test_rnd = np.array(y_test_rnd)
+
+
+
+###################################################################
+###  创建模型                                                    ###
+###################################################################
+
 loss_name = "sphereface"
 m=2
 
-def create_model():
-    learn_rate = 1
-
-    # Encoder
+def create_model(kernels=[3],droprate=0.25, factor=1):
     input_img = Input(shape=(28, 28, 1))
     input_label = Input(shape=(1,))
-    x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(input_img)
-    x = Conv2D(32, (3, 3), activation='relu', padding = 'same')(x)
-    x = MaxPooling2D(pool_size=(2, 2))(x)
-    x = Dropout(0.25)(x)
 
-    x = Conv2D(64, (3, 3), activation='relu', padding='same')(x)
-    x = Conv2D(64, (3, 3), activation='relu', padding='same')(x)
-    x = MaxPooling2D(pool_size=(2, 2))(x)
-    x = Dropout(0.25)(x)
+    outs = []
+    for kernel in kernels:
+        x = Conv2D(32, (kernel, kernel), activation='relu', padding='same')(input_img)
+        x = Conv2D(32, (kernel, kernel), activation='relu', padding='same')(x)
+        x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = BatchNormalization()(x)
+        if droprate > 0:
+            x = Dropout(droprate)(x)
 
-    x = Flatten()(x)
-    x = Dense(128, activation='relu')(x)
+        x = Conv2D(64 * factor, (3, 3), activation='relu', padding='same')(x)
+        x = Conv2D(64 * factor, (3, 3), activation='relu', padding='same')(x)
+        x = MaxPooling2D(pool_size=(2, 2))(x)
+        x = BatchNormalization()(x)
+        if droprate > 0:
+            x = Dropout(droprate)(x)
+
+        x = Flatten()(x)
+        x = Dense(128, activation='relu')(x)
+
+        outs.append(x)
+
+    if(len(outs) > 1):
+        x = add(outs)
+    else:
+        x = outs[0]
+
     x = BatchNormalization()(x)
     x = Dropout(0.5)(x)
-
-
-    output = SphereFace(10, m=m, regularizer=regularizers.l2(weight_decay))([x, input_label])
+    output = SphereFace(num_classes, m=m, regularizer=regularizers.l2(weight_decay))([x, input_label])
     model = Model([input_img, input_label], output)
 
     model.compile(loss=keras.losses.categorical_crossentropy,
-                  optimizer=keras.optimizers.adam,
+                  optimizer="adam",
                   metrics=['accuracy'])
     return model
 
+kernels = [3,3,3,3]
+factor = 4
 
 model = create_model()
 model.summary()
 
 
-checkpoint_path = './weights/{}-weights.ckpt'.format(loss_name)
+###################################################################
+###  模型训练                                                    ###
+###################################################################
+
+
+model_name = "sphereface_kernel_{}_k_{}".format(str(kernels), factor)
+loss_value = 'val_acc'
+checkpoint_path = './weights/{}_weight.ckpt'.format(model_name)
 checkpoint_dir = os.path.dirname(checkpoint_path)
 
-cp_callback =  ModelCheckpoint(checkpoint_path,
-                                 verbose=1,
-                                 save_weights_only=True,
-                                 period=1) #  save weights every 1 epochs
+callbacks = [
+    # Early stopping definition
+    #EarlyStopping(monitor=loss_value, patience=20, verbose=1),
+    # Decrease learning rate by 0.1 factor
+    #AdvancedLearnignRateScheduler(monitor=loss_value, patience=10, verbose=1, mode='auto', decayRatio=0.9),
+    # Saving best model
+    ModelCheckpoint(checkpoint_path, monitor=loss_value, save_best_only=True, verbose=1),
+]
 
 batch_size = 128
 epochs = 50
 y_train = y_train.astype("int32")
 y_test = y_test.astype("int32")
-model_train_history = model.fit([x_train_with_channels, y_train], y_train_categorical,
+model_train_history = model.fit([x_train_with_channels, (y_train)], y_train_categorical,
                                 batch_size=batch_size,
                                 epochs=epochs,
                                 verbose=1,
-                                validation_data=([x_test_with_channels,y_test], y_test_categorical),
-                                callbacks=[cp_callback])
+                                validation_data=([x_test_with_channels,(y_test)], y_test_categorical),
+                                callbacks=callbacks)
 
 
 print(model_train_history.history['acc'])

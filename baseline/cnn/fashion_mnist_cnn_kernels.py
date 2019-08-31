@@ -111,11 +111,12 @@ y_test_categorical = keras.utils.to_categorical(y_test, num_classes)
 # nadam = Nadam
 
 kernels = [3,3,3,3]
-model = create_base_cnn_model_with_kernels(input_shape, kernels=kernels, optimizer="adamax")
+factor = 4
+model = create_base_cnn_model_with_kernels(input_shape, kernels=kernels, factor=4, optimizer="sgd")
 model.summary()
 
 
-model_name = "base_cnn_kernel_{}".format(str(kernels))
+model_name = "base_cnn_kernel_{}_k_{}".format(str(kernels), factor)
 loss_value = 'val_acc'
 checkpoint_path = './weights/{}_weight.ckpt'.format(model_name)
 checkpoint_dir = os.path.dirname(checkpoint_path)
@@ -141,20 +142,19 @@ epochs = 100
 data_augmentation = True
 pixel_level = True
 
+Training = True
+Fine_turning = False
 
 if load:
     model.load_weights(checkpoint_path)
 
 
-if not data_augmentation:
-    model_train_history = model.fit(x_train_with_channels, y_train_categorical,
-                                    batch_size=batch_size,
-                                    epochs=epochs,
-                                    verbose=1,
-                                    validation_data=(x_test_with_channels, y_test_categorical),
-                                    callbacks=callbacks)
+history_acc = []
+history_val_acc = []
+history_loss = []
+history_val_loss = []
 
-else:
+if Training:
     print('Using real-time data augmentation.')
     # This will do preprocessing and realtime data augmentation:
     datagen = ImageDataGenerator(
@@ -183,33 +183,50 @@ else:
                                               workers=4,
                                               callbacks=callbacks)
 
+    for jj in range(len(model_train_history.history['acc'])):
+        history_acc.append(model_train_history.history['acc'][jj])
+        history_val_acc.append(model_train_history.history['val_acc'][jj])
+        history_loss.append(model_train_history.history['loss'][jj])
+        history_val_loss.append(model_train_history.history['val_loss'][jj])
 
-
+if Fine_turning:
+    epochs = 30
+    model_train_history = model.fit(x_train_with_channels, y_train_categorical,
+                                    batch_size=batch_size,
+                                    epochs=epochs,
+                                    verbose=1,
+                                    validation_data=(x_test_with_channels, y_test_categorical),
+                                    callbacks=callbacks)
+    for jj in range(len(model_train_history.history['acc'])):
+        history_acc.append(model_train_history.history['acc'][jj])
+        history_val_acc.append(model_train_history.history['val_acc'][jj])
+        history_loss.append(model_train_history.history['loss'][jj])
+        history_val_loss.append(model_train_history.history['val_loss'][jj])
 
 ###################################################################
 ###  保存训练信息                                                ###
 ###################################################################
 
-print(model_train_history.history['acc'])
-print(model_train_history.history['val_acc'])
-print(model_train_history.history['loss'])
-print(model_train_history.history['val_loss'])
+print(history_acc)
+print(history_val_acc)
+print(history_loss)
+print(history_val_loss)
 
 
 # Save
 filename = "{}_result.npz".format(model_name)
 save_dict = {
-    "acc": model_train_history.history['acc'],
-    "val_acc": model_train_history.history['val_acc'],
-    "loss": model_train_history.history['loss'],
-    "val_loss":model_train_history.history['val_loss']
+    "acc": history_acc,
+    "val_acc": history_val_acc,
+    "loss": history_loss,
+    "val_loss":history_val_loss
 }
 output = os.path.join("./results/", filename)
 np.savez(output, **save_dict)
 
 # Plot training & validation accuracy values
-plt.plot(model_train_history.history['acc'])
-plt.plot(model_train_history.history['val_acc'])
+plt.plot(np.array(history_acc))
+plt.plot(np.array(history_val_acc))
 plt.title('Model accuracy')
 plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
@@ -219,8 +236,8 @@ plt.savefig('./images/{}_acc.png'.format(model_name))
 plt.show()
 
 # Plot training & validation loss values
-plt.plot(model_train_history.history['loss'])
-plt.plot(model_train_history.history['val_loss'])
+plt.plot(np.array(history_loss))
+plt.plot(np.array(history_val_loss))
 plt.title('Model loss')
 plt.ylabel('Loss')
 plt.xlabel('Epoch')

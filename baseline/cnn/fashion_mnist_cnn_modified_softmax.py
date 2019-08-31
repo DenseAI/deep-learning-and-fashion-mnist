@@ -99,7 +99,7 @@ def create_model():
     model.add(Dropout(0.25))
 
     model.add(Flatten())
-    model.add(Dense(128, activation='relu'))
+    model.add(Dense(100, activation='relu'))
     model.add(BatchNormalization())
     model.add(Dropout(0.5))
     model.add(ModifiedSoftmaxLayer(num_classes, activation='softmax'))
@@ -128,7 +128,7 @@ epochs = 50
 model_train_history = model.fit(x_train_with_channels, y_train_categorical,
                                 batch_size=batch_size,
                                 epochs=epochs,
-                                verbose=1,
+                                verbose=2,
                                 validation_data=(x_test_with_channels, y_test_categorical),
                                 callbacks=[cp_callback])
 
